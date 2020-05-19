@@ -1,0 +1,4 @@
+POST /translate/2text                           controllers.TranslateController.translate2Human
+POST /translate/2morse                          controllers.TranslateController.toAlfaToMorse
+POST /translate/2binary                         controllers.TranslateController.decodeBits2Morse
+
