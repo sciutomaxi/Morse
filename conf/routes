@@ -1,4 +1,36 @@
+###
+ #  summary: Translate human to morse
+ #  consumes: ["application/json"]
+ #  produces: ["application/json"]
+ #  parameters:
+ #    - in: "body"
+ #      name: "body"
+ #      description: "e.g: {\"text\":\".... --- .-.. .-\"}"
+ #      required: true
+ #      content:
+ #        application/json:
+ #        schema:
+ #         $ref: '#/definitions/models.RequestMorse'
+ #      schema:
+ #        $ref: '#/definitions/models.RequestMorse'
+ #  responses:
+ #    400:
+ #      description: "Invalid input"
+ #    200:
+ #      description: "Success"
+ #      content:
+ #        application/json:
+ #          schema:
+ #            $ref: '#/definitions/models.ResponseMorse'
+ ###
 POST /translate/2text                           controllers.TranslateController.translate2Human
+
 POST /translate/2morse                          controllers.TranslateController.toAlfaToMorse
+
 POST /translate/2binary                         controllers.TranslateController.decodeBits2Morse
 
+### NoDocs ###
+GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+
+### NoDocs ###
+GET   /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)

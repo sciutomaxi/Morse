@@ -1,13 +1,21 @@
-import sbt.Keys._
-
 lazy val root = (project in file("."))
-  .enablePlugins(PlayService, PlayLayoutPlugin)
+  .enablePlugins(PlayScala, SwaggerPlugin)
   .settings(
-    name := "morse",
+    name := """Morse""",
     scalaVersion := "2.12.8",
     libraryDependencies ++= Seq(
       guice,
+      "org.webjars" % "swagger-ui" % "3.25.0",
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
       "org.mockito" % "mockito-core" % "2.8.47" % "test"
+
+    ),
+    scalacOptions ++= Seq(
+      "-feature",
+      "-deprecation",
+      "-Xfatal-warnings"
     )
   )
+
+swaggerDomainNameSpaces := Seq("models")
+swaggerPrettyJson := true
