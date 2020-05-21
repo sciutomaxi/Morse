@@ -39,7 +39,6 @@ class TranslateController @Inject()(morse: MorseService, cc: ControllerComponent
         }
       }
       case validationErr: JsError => BadRequest("Json incorrecto")
-
     }
   }
 
