@@ -1,5 +1,5 @@
 ###
- #  summary: Translate human to morse
+ #  summary: Translate code morse to human
  #  consumes: ["application/json"]
  #  produces: ["application/json"]
  #  parameters:
@@ -10,9 +10,9 @@
  #      content:
  #        application/json:
  #        schema:
- #         $ref: '#/definitions/models.RequestMorse'
+ #         $ref: '#/definitions/RequestMorse'
  #      schema:
- #        $ref: '#/definitions/models.RequestMorse'
+ #        $ref: '#/definitions/RequestMorse'
  #  responses:
  #    400:
  #      description: "Invalid input"
@@ -25,9 +25,59 @@
  ###
 POST /translate/2text                           controllers.TranslateController.translate2Human
 
+###
+ #  summary: Translate alfa to code morse
+ #  consumes: ["application/json"]
+ #  produces: ["application/json"]
+ #  parameters:
+ #    - in: "body"
+ #      name: "body"
+ #      description: "e.g: {\"text\":\"hola\"}"
+ #      required: true
+ #      content:
+ #        application/json:
+ #        schema:
+ #         $ref: '#/definitions/RequestText'
+ #      schema:
+ #        $ref: '#/definitions/RequestText'
+ #  responses:
+ #    400:
+ #      description: "Invalid input"
+ #    200:
+ #      description: "Success"
+ #      content:
+ #        application/json:
+ #          schema:
+ #            $ref: '#/definitions/models.ResponseMorse'
+ ###
 POST /translate/2morse                          controllers.TranslateController.toAlfaToMorse
 
-POST /translate/2binary                         controllers.TranslateController.decodeBits2Morse
+###
+ #  summary: Translate bits to code morse
+ #  consumes: ["application/json"]
+ #  produces: ["application/json"]
+ #  parameters:
+ #    - in: "body"
+ #      name: "body"
+ #      description: "e.g: {\"text\":\"001100110101000\"}"
+ #      required: true
+ #      content:
+ #        application/json:
+ #        schema:
+ #         $ref: '#/definitions/RequestBits'
+ #      schema:
+ #        $ref: '#/definitions/RequestBits'
+ #  responses:
+ #    400:
+ #      description: "Invalid input"
+ #    200:
+ #      description: "Success"
+ #      content:
+ #        application/json:
+ #          schema:
+ #            $ref: '#/definitions/models.ResponseMorse'
+ ###
+POST /translate/binaryToMorse                   controllers.TranslateController.decodeBits2Morse
 
 ### NoDocs ###
 GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
