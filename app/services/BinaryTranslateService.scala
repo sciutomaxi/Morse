@@ -63,7 +63,7 @@ class BinaryTranslateService @Inject()(){
     }
   }
 
-  private def getAnalysisValues(binay: String) = {
+  def getAnalysisValues(binay: String) = {
     val binaryChars = binay.toCharArray
     var i = 0
     var countOne = 0

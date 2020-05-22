@@ -19,3 +19,10 @@ lazy val root = (project in file("."))
 
 swaggerDomainNameSpaces := Seq("models")
 swaggerPrettyJson := true
+
+coverageExcludedPackages := Seq(
+  "router\\.*",
+  ".*Reverse.*"
+).mkString(";")
+
+coverageEnabled := true
