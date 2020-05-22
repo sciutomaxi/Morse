@@ -25,4 +25,10 @@ coverageExcludedPackages := Seq(
   ".*Reverse.*"
 ).mkString(";")
 
-coverageEnabled := true
+coverageMinimum := 70
+
+coverageFailOnMinimum := false
+
+coverageHighlighting := true
+
+coverageEnabled := false
