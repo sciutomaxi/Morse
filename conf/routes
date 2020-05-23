@@ -7,21 +7,13 @@
  #      name: "body"
  #      description: "e.g: {\"text\":\".... --- .-.. .-\"}"
  #      required: true
- #      content:
- #        application/json:
- #        schema:
- #         $ref: '#/definitions/RequestMorse'
  #      schema:
  #        $ref: '#/definitions/RequestMorse'
  #  responses:
- #    400:
+ #    403:
  #      description: "Invalid input"
  #    200:
  #      description: "Success"
- #      content:
- #        application/json:
- #          schema:
- #            $ref: '#/definitions/models.ResponseMorse'
  ###
 POST /translate/2text                           controllers.TranslateController.translate2Human
 
@@ -34,21 +26,13 @@ POST /translate/2text                           controllers.TranslateController.
  #      name: "body"
  #      description: "e.g: {\"text\":\"hola\"}"
  #      required: true
- #      content:
- #        application/json:
- #        schema:
- #         $ref: '#/definitions/RequestText'
  #      schema:
  #        $ref: '#/definitions/RequestText'
  #  responses:
- #    400:
+ #    403:
  #      description: "Invalid input"
  #    200:
  #      description: "Success"
- #      content:
- #        application/json:
- #          schema:
- #            $ref: '#/definitions/models.ResponseMorse'
  ###
 POST /translate/2morse                          controllers.TranslateController.toAlfaToMorse
 
@@ -61,21 +45,13 @@ POST /translate/2morse                          controllers.TranslateController.
  #      name: "body"
  #      description: "e.g: {\"text\":\"001100110101000\"}"
  #      required: true
- #      content:
- #        application/json:
- #        schema:
- #         $ref: '#/definitions/RequestBits'
  #      schema:
  #        $ref: '#/definitions/RequestBits'
  #  responses:
- #    400:
+ #    403:
  #      description: "Invalid input"
  #    200:
  #      description: "Success"
- #      content:
- #        application/json:
- #          schema:
- #            $ref: '#/definitions/models.ResponseMorse'
  ###
 POST /translate/binaryToMorse                   controllers.TranslateController.decodeBits2Morse
 
