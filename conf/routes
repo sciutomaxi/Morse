@@ -10,7 +10,7 @@
  #      schema:
  #        $ref: '#/definitions/RequestMorse'
  #  responses:
- #    403:
+ #    400:
  #      description: "Invalid input"
  #    200:
  #      description: "Success"
@@ -48,7 +48,7 @@ POST /translate/2morse                          controllers.TranslateController.
  #      schema:
  #        $ref: '#/definitions/RequestBits'
  #  responses:
- #    403:
+ #    400:
  #      description: "Invalid input"
  #    200:
  #      description: "Success"
