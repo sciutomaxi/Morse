@@ -1,10 +1,7 @@
 ---
 swagger: "2.0"
-schemes:
-- "https"
-- "http"
 info:
-  title: "Code Morse"
+  title: "API REST Morse"
   description: "Translate code morse"
 
 consumes:
