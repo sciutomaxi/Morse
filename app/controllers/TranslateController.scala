@@ -5,10 +5,10 @@ import models.RequestMorse
 import play.api.Logger
 import play.api.libs.json.{Format, JsError, JsSuccess, Json}
 import play.api.mvc._
-import services.MorseService
+import services.{BinaryTranslateService, MorseService}
 
 @Singleton
-class TranslateController @Inject()(morse: MorseService, cc: ControllerComponents) extends AbstractController(cc) {
+class TranslateController @Inject()(morse: MorseService, binaryTranslate: BinaryTranslateService, cc: ControllerComponents) extends AbstractController(cc) {
 
   val logger: Logger = Logger(this.getClass())
   implicit val requestMorseFormat: Format[RequestMorse] = Json.format[RequestMorse]
@@ -46,7 +46,7 @@ class TranslateController @Inject()(morse: MorseService, cc: ControllerComponent
     request.body.validate[RequestMorse] match {
       case r: JsSuccess[RequestMorse] => {
         if (r.get.text.matches("[0-1]+"))
-          Ok(morse.translateBinaryToMorse(r.get.text))
+          Ok(binaryTranslate.translateBinaryToMorse(r.get.text))
         else {
           logger.error(s"Input incorrecto ${r.get.text}")
           BadRequest("Caracteres invalidos")

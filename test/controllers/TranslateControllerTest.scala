@@ -15,8 +15,8 @@ class TranslateControllerTest extends FunSuite with GuiceOneAppPerSuite {
 
   val repo = new MorseRepository
   val binaryTranslate = new BinaryTranslateService()
-  val morseServiceInst = new MorseService(repo, binaryTranslate)
-  val controller = new TranslateController(morseServiceInst, Helpers.stubControllerComponents())
+  val morseServiceInst = new MorseService(repo)
+  val controller = new TranslateController(morseServiceInst, binaryTranslate, Helpers.stubControllerComponents())
 
   test("Json valid OK /translate/2morse") {
     val request = FakeRequest(POST, s"/translate/2morse").withJsonBody(Json.parse("""{"text":"hola"}"""))

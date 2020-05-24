@@ -4,7 +4,7 @@ import javax.inject.Inject
 import play.api.Logger
 import repositories.MorseRepository
 
-class MorseService @Inject()(repository: MorseRepository, binaryTranslate: BinaryTranslateService) {
+class MorseService @Inject()(repository: MorseRepository) {
 
   private val logger: Logger = Logger(this.getClass())
 
@@ -38,16 +38,6 @@ class MorseService @Inject()(repository: MorseRepository, binaryTranslate: Binar
       a + repository.findMorseCode(b.toString).getOrElse("") + " "
     }
     }.trim
-  }
-
-  /**
-    * Traducimos de binario a codigo morse
-    *
-    * @param binary 010101000110000
-    * @return code morse
-    */
-  def translateBinaryToMorse(binary: String) = {
-    binaryTranslate.translateBinaryToMorse(binary)
   }
 
 }

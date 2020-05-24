@@ -7,10 +7,10 @@ import scala.util.Try
 class BinaryTranslateService @Inject()() {
 
   /**
-    * Traducimos de binario a code morse
+    * Traducimos de binario a codigo morse
     *
-    * @param binay 0010111010110000
-    * @return string code morse
+    * @param binary 010101000110000
+    * @return code morse
     */
   def translateBinaryToMorse(binay: String) = {
     val values = getAnalysisValues(binay)
@@ -28,12 +28,12 @@ class BinaryTranslateService @Inject()() {
         }
         //si es el fin
         if (i == binaryChars.size - 1) {
-          morse += getDotorDash(countOne, values._1)
+          morse += getDotOrDash(countOne, values._1)
         }
       } else {
         countZero += 1
         if (i != 0 && binaryChars(i - 1) == '1') {
-          morse += getDotorDash(countOne, values._1)
+          morse += getDotOrDash(countOne, values._1)
           countOne = 0
         }
         //si es el fin
@@ -53,7 +53,7 @@ class BinaryTranslateService @Inject()() {
     * @param avg      int
     * @return String . or -
     */
-  private def getDotorDash(countOne: Int, avg: Int): String = {
+  private def getDotOrDash(countOne: Int, avg: Int): String = {
     if (countOne <= avg)
       "."
     else
