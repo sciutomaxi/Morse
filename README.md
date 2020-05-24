@@ -1,15 +1,15 @@
-#Traductor de código morse 
+# Traductor de código morse 
 
 
 API REST MORSE
 
 
-####Definición del problema
+#### Definición del problema
 
 Debemos poder traducir código morse a alfanumerico y viciversa. Ademas debemos poder traducir un conjunto de bits a código morse.
 
 
-####Solución planteada
+#### Solución planteada
 La solución para traducir código morse a alfanumerico y viciversa es utilizar dos mapas en memoria. Uno de los mapas tiene el siguiente formato:
 
 Map("código morse"-> Alfanumerico) y el otro mapa es Map("alfa"->"código morse")
@@ -29,7 +29,7 @@ Si no se dan ninguna de las dos condiciones mencionadas, significa que es un esp
 
 Asumimos que un espacio de palabras es mayor igual a uno o mas espacios de letras.
 
-####Consideraciones
+#### Consideraciones
 
 Una consideracion que tuvimos es que en el ejemplo que pone en el examen es un conjunto de bits asi:
 
@@ -39,7 +39,7 @@ Vemos que es un código morse que no tiene ningun espacio de palabras, quizas lo
 
 00000000110110110011100001111110001111110011111100000001110111111110111011100000001100011111100000000000000111111001111110000000110000110111111110111011100000011011100000000000
 
-###Requerimientos para el Build
+### Requerimientos para el Build
 
 * Java 1.8 o superior
 * [sbt]
@@ -51,11 +51,11 @@ Como correr la app
 $ sbt run
 ```
 
-###Host Server
+### Host Server
 
 La api esta disponible [aqui] con sus test en swagger para facilitar su [pruebas]
 
-#####Endpoints hosteados
+##### Endpoints hosteados
 
 ```sh
 $ curl 'https://morsemeli.herokuapp.com/translate/2text' -H 'Content-Type: application/json' --data-binary $'{"text": ".... --- .-.. .-"}'
@@ -65,7 +65,7 @@ $ curl 'https://morsemeli.herokuapp.com/translate/2morse' -H 'Content-Type: appl
 $ curl 'https://morsemeli.herokuapp.com/translate/binaryToMorse' -H 'Content-Type: application/json' --data-binary $'{"text":"00000000110110110011100001111110001111110011111100000001110111111110111011100000001100011111100000000000000111111001111110000000110000110111111110111011100000011011100000000000"}'
 ```  
 
-###Localhost
+### Localhost
 
 
 API REST MORSE dispone de la interface Swagger (disponibilizamos los endpoint de la api rest) para poder realizar los test.
@@ -74,7 +74,7 @@ La misma se encuentra en la siguiente url [test local]
 
 
 
-#####Endpoints
+##### Endpoints
 
 ```sh
 $ curl 'http://localhost:9000/translate/2text' -H 'Content-Type: application/json' --data-binary $'{"text": ".... --- .-.. .-"}'
@@ -85,7 +85,7 @@ $ curl 'http://localhost:9000/translate/binaryToMorse' -H 'Content-Type: applica
 ```
 
 
-###Cobertura
+### Cobertura
 
 Para poder realizar el reporte de cobertura del código debemos habilitar coverage en el file build.sbt:
 
