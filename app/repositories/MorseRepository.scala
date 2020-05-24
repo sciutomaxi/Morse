@@ -10,6 +10,10 @@ class MorseRepository {
   private val logger: Logger = Logger(this.getClass())
   private val dictionary = loadData()
 
+  /**
+    * Cargamos los dicionarios en un map
+    * @return
+    */
   private def loadData() = {
     logger.info("Loading data")
     val data = scala.io.Source.fromFile("conf/data.json").mkString
@@ -19,21 +23,21 @@ class MorseRepository {
   /**
     * Find morse
     *
-    * @param morse e.g.  .-.
-    * @return Alfa Option[String]
+    * @param alfa e.g.  hola
+    * @return Morse Option[String]
     */
-  def findMorseCode(morse: String) = {
-    dictionary.languages("morse").data.get(morse.toLowerCase)
+  def findMorseCode(alfa: String) = {
+    dictionary.languages("morse").data.get(alfa.toLowerCase)
   }
 
   /**
     * Find morse
     *
-    * @param alfa e.g. f
+    * @param morse e.g. .-.
     * @return Alfa Option[String]
     */
-  def findAlfaCode(alfa: String) = {
-    dictionary.languages("alfa").data.get(alfa.toLowerCase)
+  def findAlfaCode(morse: String) = {
+    dictionary.languages("alfa").data.get(morse)
   }
 
 }

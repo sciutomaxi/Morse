@@ -2,8 +2,16 @@ package services
 
 import javax.inject.Inject
 
+import scala.util.Try
+
 class BinaryTranslateService @Inject()() {
 
+  /**
+    * Traducimos de binario a code morse
+    *
+    * @param binay 0010111010110000
+    * @return string code morse
+    */
   def translateBinaryToMorse(binay: String) = {
     val values = getAnalysisValues(binay)
     val binaryChars = binay.toCharArray
@@ -38,6 +46,13 @@ class BinaryTranslateService @Inject()() {
     morse.trim
   }
 
+  /**
+    * Obtenemos un punto o guion dependiendo de la cantidad de 1s contados y el promedio
+    *
+    * @param countOne int
+    * @param avg      int
+    * @return String . or -
+    */
   private def getDotorDash(countOne: Int, avg: Int): String = {
     if (countOne <= avg)
       "."
@@ -64,6 +79,11 @@ class BinaryTranslateService @Inject()() {
     }
   }
 
+  /**
+    * Analizamos el binary resolviendo los promedios de 1s y 0s
+    * @param binay
+    * @return
+    */
   def getAnalysisValues(binay: String) = {
     val binaryChars = binay.toCharArray
     var i = 0
@@ -97,7 +117,7 @@ class BinaryTranslateService @Inject()() {
       i += 1
     }
 
-    (countOne / ocurrenciasOne, countZero / ocurrenciasZero)
+    (Try(countOne / ocurrenciasOne).getOrElse(0), Try(countZero / ocurrenciasZero).getOrElse(0))
   }
 
 

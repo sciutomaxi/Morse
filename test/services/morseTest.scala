@@ -21,7 +21,6 @@ class morseTest extends FunSuite with BeforeAndAfter {
     assert(morseServiceInst.translateMorsetoAlfa(".... --- .-.. .-  -.-. .- .-. --- .-.. .-") == "hola carola")
     assert(morseServiceInst.translateMorsetoAlfa(".... --- .-.. .-") == "hola")
     assert(morseServiceInst.translateMorsetoAlfa(".... --- .-.. .-  -- . .-.. ..") == "hola meli")
-
   }
 
   test("Morse Service translateBinaryToMorse") {
