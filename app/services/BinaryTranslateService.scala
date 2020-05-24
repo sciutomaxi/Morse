@@ -2,7 +2,7 @@ package services
 
 import javax.inject.Inject
 
-class BinaryTranslateService @Inject()(){
+class BinaryTranslateService @Inject()() {
 
   def translateBinaryToMorse(binay: String) = {
     val values = getAnalysisValues(binay)
@@ -47,6 +47,7 @@ class BinaryTranslateService @Inject()(){
 
   /**
     * Verificamos si es una letra, palabra o caracter
+    *
     * @param countZero
     * @param avgZero
     * @return
@@ -56,10 +57,10 @@ class BinaryTranslateService @Inject()(){
       ""
     } else {
       //debemos ver si es un espacio entre letras o palabras
-      if (countZero > ((avgZero + 1) * 2))
-        "  "
-      else
+      if (countZero <= ((avgZero * 2) + 1)) //es una letra
         " "
+      else // es una palabra
+        "  "
     }
   }
 

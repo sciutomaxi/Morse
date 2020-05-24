@@ -16,14 +16,16 @@ class morseTest extends FunSuite with BeforeAndAfter {
   }
 
   test("Morse Service translateMorsetoAlfa") {
-    //assert(morseServiceInst.translateMorsetoAlfa(".-..") == "a")
+    assert(morseServiceInst.translateMorsetoAlfa(".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --..") == "abcdefghijklmnopqrstuvwxyz")
     assert(morseServiceInst.translateMorsetoAlfa(".-") == "a")
+    assert(morseServiceInst.translateMorsetoAlfa(".... --- .-.. .-  -.-. .- .-. --- .-.. .-") == "hola carola")
     assert(morseServiceInst.translateMorsetoAlfa(".... --- .-.. .-") == "hola")
     assert(morseServiceInst.translateMorsetoAlfa(".... --- .-.. .-  -- . .-.. ..") == "hola meli")
 
   }
 
   test("Morse Service translateBinaryToMorse") {
+    assert(morseServiceInst.translateBinaryToMorse("011010101011001011010") == "-...- .-.")
     assert(morseServiceInst.translateBinaryToMorse("01110100000") == "-.")
     assert(morseServiceInst.translateBinaryToMorse("011101000000") == "-.")
     assert(morseServiceInst.translateBinaryToMorse("00111101101101110001100000000000") == "-..-.")
