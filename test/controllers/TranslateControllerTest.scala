@@ -72,4 +72,34 @@ class TranslateControllerTest extends FunSuite with GuiceOneAppPerSuite {
     assert(status(responseJsonBad) == BAD_REQUEST)
   }
 
+  test("Translate smart morse to alfa OK") {
+    val request = FakeRequest(POST, s"/translate/smart").withJsonBody(Json.parse("""{"source":"morse","target":"alfa","text":".... --- .-.. .-"}"""))
+    val response = call(controller.translateSmart, request)
+    assert(status(response) == OK)
+  }
+
+  test("Translate smart alfa to morse OK") {
+    val request = FakeRequest(POST, s"/translate/smart").withJsonBody(Json.parse("""{"source":"alfa","target":"morse","text":"hola"}"""))
+    val response = call(controller.translateSmart, request)
+    assert(status(response) == OK)
+  }
+
+  test("Translate smart bits to morse OK") {
+    val request = FakeRequest(POST, s"/translate/smart").withJsonBody(Json.parse("""{"source":"bits","target":"morse","text":"01010100100110000"}"""))
+    val response = call(controller.translateSmart, request)
+    assert(status(response) == OK)
+  }
+
+  test("Translate smart morse to bits Method not implemented 501") {
+    val request = FakeRequest(POST, s"/translate/smart").withJsonBody(Json.parse("""{"source":"morse","target":"bits","text":".... --- .-.. .-"}"""))
+    val response = call(controller.translateSmart, request)
+    assert(status(response) == NOT_IMPLEMENTED)
+  }
+
+  test("Translate smart bad request") {
+    val request = FakeRequest(POST, s"/translate/smart").withJsonBody(Json.parse("""{"source":"chino","target":"morse","text":"una palabra china"}"""))
+    val response = call(controller.translateSmart, request)
+    assert(status(response) == BAD_REQUEST)
+  }
+
 }

@@ -15,7 +15,7 @@
  #    200:
  #      description: "Success"
  ###
-POST /translate/2text                           controllers.TranslateController.translate2Human
+POST        /translate/2text                controllers.TranslateController.translate2Human
 
 ###
  #  summary: Translate alfa to code morse
@@ -34,7 +34,7 @@ POST /translate/2text                           controllers.TranslateController.
  #    200:
  #      description: "Success"
  ###
-POST /translate/2morse                          controllers.TranslateController.toAlfaToMorse
+POST        /translate/2morse               controllers.TranslateController.toAlfaToMorse
 
 ###
  #  summary: Translate bits to code morse
@@ -53,10 +53,31 @@ POST /translate/2morse                          controllers.TranslateController.
  #    200:
  #      description: "Success"
  ###
-POST /translate/binaryToMorse                   controllers.TranslateController.decodeBits2Morse
+POST        /translate/binaryToMorse        controllers.TranslateController.decodeBits2Morse
+
+###
+ #  summary: Translate smart bits to alfa or morse to alfa or bits to morse
+ #  consumes: ["application/json"]
+ #  produces: ["application/json"]
+ #  parameters:
+ #    - in: "body"
+ #      name: "body"
+ #      description: "e.g: {\"text\":\"hola\",\"source\":\"alfa\",\"target\":\"morse\"}"
+ #      required: true
+ #      schema:
+ #        $ref: '#/definitions/RequestSmart'
+ #  responses:
+ #    400:
+ #      description: "Invalid input"
+ #    200:
+ #      description: "Success"
+ #    501:
+ #      description: "Translate not implemented"
+ ###
+POST        /translate/smart                controllers.TranslateController.translateSmart
 
 ### NoDocs ###
-GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+GET         /docs/swagger-ui/*file          controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
 
 ### NoDocs ###
-GET   /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)

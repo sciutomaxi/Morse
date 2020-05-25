@@ -34,3 +34,19 @@ definitions:
       text:
         type: "string"
         example: "00000000110110110011100001111110001111110011111100000001110111111110111011100000001100011111100000000000000111111001111110000000110000110111111110111011100000011011100000000000"
+  RequestSmart:
+    type: "object"
+    required:
+    - "target"
+    - "text"
+    - "source"
+    properties:
+      text:
+        type: "string"
+        example: "hola"
+      source:
+        type: "string"
+        example: "alfa"
+      target:
+        type: "string"
+        example: "morse"
