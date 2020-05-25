@@ -31,13 +31,13 @@
 </span>7 <span style=''>class BinaryTranslateService @Inject()() {
 </span>8 <span style=''>
 </span>9 <span style=''>  /**
-</span>10 <span style=''>    * Traducimos de binario a codigo morse
+</span>10 <span style=''>    * Translate from binary to morse code
 </span>11 <span style=''>    *
 </span>12 <span style=''>    * @param binary 010101000110000
 </span>13 <span style=''>    * @return code morse
 </span>14 <span style=''>    */
 </span>15 <span style=''>  def translateBinaryToMorse(binay: String) = {
-</span>16 <span style=''>    val values = </span><span style='background: #AEF1AE'>getAnalysisValues(binay)</span><span style=''>
+</span>16 <span style=''>    val values = </span><span style='background: #AEF1AE'>getAvgOnesAndZeros(binay)</span><span style=''>
 </span>17 <span style=''>    val binaryChars = </span><span style='background: #AEF1AE'>binay.toCharArray</span><span style=''>
 </span>18 <span style=''>    var i = </span><span style='background: #AEF1AE'>0</span><span style=''>
 </span>19 <span style=''>    var countOne = </span><span style='background: #AEF1AE'>0</span><span style=''>
@@ -71,7 +71,7 @@
 </span>47 <span style=''>  }
 </span>48 <span style=''>
 </span>49 <span style=''>  /**
-</span>50 <span style=''>    * Obtenemos un punto o guion dependiendo de la cantidad de 1s contados y el promedio
+</span>50 <span style=''>    * Get a dot or dash depending on the number of counted 1s and the average
 </span>51 <span style=''>    *
 </span>52 <span style=''>    * @param countOne int
 </span>53 <span style=''>    * @param avg      int
@@ -85,7 +85,7 @@
 </span>61 <span style=''>  }
 </span>62 <span style=''>
 </span>63 <span style=''>  /**
-</span>64 <span style=''>    * Verificamos si es una letra, palabra o caracter
+</span>64 <span style=''>    * Get a letter, word or character
 </span>65 <span style=''>    *
 </span>66 <span style=''>    * @param countZero
 </span>67 <span style=''>    * @param avgZero
@@ -104,11 +104,11 @@
 </span>80 <span style=''>  }
 </span>81 <span style=''>
 </span>82 <span style=''>  /**
-</span>83 <span style=''>    * Analizamos el binary resolviendo los promedios de 1s y 0s
+</span>83 <span style=''>    * Get averages of 1s and 0s
 </span>84 <span style=''>    * @param binay
-</span>85 <span style=''>    * @return
+</span>85 <span style=''>    * @return (avg ones, avg zeros)
 </span>86 <span style=''>    */
-</span>87 <span style=''>  def getAnalysisValues(binay: String) = {
+</span>87 <span style=''>  def getAvgOnesAndZeros(binay: String) = {
 </span>88 <span style=''>    val binaryChars = </span><span style='background: #AEF1AE'>binay.toCharArray</span><span style=''>
 </span>89 <span style=''>    var i = </span><span style='background: #AEF1AE'>0</span><span style=''>
 </span>90 <span style=''>    var countOne = </span><span style='background: #AEF1AE'>0</span><span style=''>
@@ -165,7 +165,7 @@
           175
         </td>
         <td>
-          301
+          300
           -
           325
         </td>
@@ -173,10 +173,10 @@
           Apply
         </td>
         <td>
-          services.BinaryTranslateService.getAnalysisValues
+          services.BinaryTranslateService.getAvgOnesAndZeros
         </td>
         <td style="background: #AEF1AE">
-          BinaryTranslateService.this.getAnalysisValues(binay)
+          BinaryTranslateService.this.getAvgOnesAndZeros(binay)
         </td>
       </tr><tr>
         <td>
@@ -1387,9 +1387,9 @@
           230
         </td>
         <td>
-          1428
+          1417
           -
-          1443
+          1432
         </td>
         <td>
           Apply
@@ -1408,9 +1408,9 @@
           232
         </td>
         <td>
-          1451
+          1440
           -
-          1454
+          1443
         </td>
         <td>
           Block
@@ -1429,9 +1429,9 @@
           231
         </td>
         <td>
-          1451
+          1440
           -
-          1454
+          1443
         </td>
         <td>
           Literal
@@ -1450,9 +1450,9 @@
           234
         </td>
         <td>
-          1470
+          1459
           -
-          1473
+          1462
         </td>
         <td>
           Block
@@ -1471,9 +1471,9 @@
           233
         </td>
         <td>
-          1470
+          1459
           -
-          1473
+          1462
         </td>
         <td>
           Literal
@@ -1492,9 +1492,9 @@
           235
         </td>
         <td>
-          1695
+          1668
           -
-          1715
+          1688
         </td>
         <td>
           Apply
@@ -1513,9 +1513,9 @@
           236
         </td>
         <td>
-          1725
+          1698
           -
-          1727
+          1700
         </td>
         <td>
           Literal
@@ -1534,9 +1534,9 @@
           237
         </td>
         <td>
-          1725
+          1698
           -
-          1727
+          1700
         </td>
         <td>
           Block
@@ -1555,9 +1555,9 @@
           244
         </td>
         <td>
-          1808
+          1781
           -
-          1914
+          1887
         </td>
         <td>
           If
@@ -1579,9 +1579,9 @@ else
           238
         </td>
         <td>
-          1826
+          1799
           -
-          1843
+          1816
         </td>
         <td>
           Apply
@@ -1600,9 +1600,9 @@ else
           239
         </td>
         <td>
-          1812
+          1785
           -
-          1844
+          1817
         </td>
         <td>
           Apply
@@ -1621,9 +1621,9 @@ else
           241
         </td>
         <td>
-          1869
+          1842
           -
-          1872
+          1845
         </td>
         <td>
           Block
@@ -1642,9 +1642,9 @@ else
           240
         </td>
         <td>
-          1869
+          1842
           -
-          1872
+          1845
         </td>
         <td>
           Literal
@@ -1663,9 +1663,9 @@ else
           243
         </td>
         <td>
-          1910
+          1883
           -
-          1914
+          1887
         </td>
         <td>
           Block
@@ -1684,9 +1684,9 @@ else
           242
         </td>
         <td>
-          1910
+          1883
           -
-          1914
+          1887
         </td>
         <td>
           Literal
@@ -1705,9 +1705,9 @@ else
           245
         </td>
         <td>
-          2101
+          2065
           -
-          2118
+          2082
         </td>
         <td>
           Apply
@@ -1726,9 +1726,9 @@ else
           246
         </td>
         <td>
-          2131
+          2095
           -
-          2132
+          2096
         </td>
         <td>
           Literal
@@ -1747,9 +1747,9 @@ else
           247
         </td>
         <td>
-          2152
+          2116
           -
-          2153
+          2117
         </td>
         <td>
           Literal
@@ -1768,9 +1768,9 @@ else
           248
         </td>
         <td>
-          2179
+          2143
           -
-          2180
+          2144
         </td>
         <td>
           Literal
@@ -1789,9 +1789,9 @@ else
           249
         </td>
         <td>
-          2201
+          2165
           -
-          2202
+          2166
         </td>
         <td>
           Literal
@@ -1810,9 +1810,9 @@ else
           250
         </td>
         <td>
-          2227
+          2191
           -
-          2228
+          2192
         </td>
         <td>
           Literal
@@ -1831,9 +1831,9 @@ else
           251
         </td>
         <td>
-          2255
+          2219
           -
-          2256
+          2220
         </td>
         <td>
           Literal
@@ -1852,9 +1852,9 @@ else
           253
         </td>
         <td>
-          2269
+          2233
           -
-          2291
+          2255
         </td>
         <td>
           Apply
@@ -1873,9 +1873,9 @@ else
           289
         </td>
         <td>
-          2262
+          2226
           -
-          2262
+          2226
         </td>
         <td>
           Literal
@@ -1894,9 +1894,9 @@ else
           288
         </td>
         <td>
-          2293
+          2257
           -
-          3028
+          2992
         </td>
         <td>
           Block
@@ -1947,9 +1947,9 @@ else
           252
         </td>
         <td>
-          2273
+          2237
           -
-          2291
+          2255
         </td>
         <td>
           Select
@@ -1968,9 +1968,9 @@ else
           290
         </td>
         <td>
-          2262
+          2226
           -
-          2262
+          2226
         </td>
         <td>
           Block
@@ -1989,9 +1989,9 @@ else
           287
         </td>
         <td>
-          2293
+          2257
           -
-          2293
+          2257
         </td>
         <td>
           Apply
@@ -2010,9 +2010,9 @@ else
           254
         </td>
         <td>
-          2305
+          2269
           -
-          2326
+          2290
         </td>
         <td>
           Apply
@@ -2031,9 +2031,9 @@ else
           269
         </td>
         <td>
-          2328
+          2292
           -
-          2676
+          2640
         </td>
         <td>
           Block
@@ -2064,9 +2064,9 @@ else
           255
         </td>
         <td>
-          2338
+          2302
           -
-          2351
+          2315
         </td>
         <td>
           Apply
@@ -2085,9 +2085,9 @@ else
           256
         </td>
         <td>
-          2454
+          2418
           -
-          2455
+          2419
         </td>
         <td>
           Literal
@@ -2106,9 +2106,9 @@ else
           258
         </td>
         <td>
-          2449
+          2413
           -
-          2484
+          2448
         </td>
         <td>
           Apply
@@ -2127,9 +2127,9 @@ else
           261
         </td>
         <td>
-          2486
+          2450
           -
-          2556
+          2520
         </td>
         <td>
           Block
@@ -2151,9 +2151,9 @@ else
           257
         </td>
         <td>
-          2459
+          2423
           -
-          2484
+          2448
         </td>
         <td>
           Apply
@@ -2172,9 +2172,9 @@ else
           259
         </td>
         <td>
-          2498
+          2462
           -
-          2518
+          2482
         </td>
         <td>
           Apply
@@ -2193,9 +2193,9 @@ else
           260
         </td>
         <td>
-          2545
+          2509
           -
-          2546
+          2510
         </td>
         <td>
           Literal
@@ -2214,9 +2214,9 @@ else
           262
         </td>
         <td>
-          2572
+          2536
           -
-          2592
+          2556
         </td>
         <td>
           Apply
@@ -2235,9 +2235,9 @@ else
           268
         </td>
         <td>
-          2562
+          2526
           -
-          2668
+          2632
         </td>
         <td>
           If
@@ -2259,9 +2259,9 @@ else
           267
         </td>
         <td>
-          2562
+          2526
           -
-          2562
+          2526
         </td>
         <td>
           Block
@@ -2280,9 +2280,9 @@ else
           263
         </td>
         <td>
-          2566
+          2530
           -
-          2593
+          2557
         </td>
         <td>
           Apply
@@ -2301,9 +2301,9 @@ else
           266
         </td>
         <td>
-          2562
+          2526
           -
-          2562
+          2526
         </td>
         <td>
           Literal
@@ -2322,9 +2322,9 @@ else
           265
         </td>
         <td>
-          2639
+          2603
           -
-          2658
+          2622
         </td>
         <td>
           Assign
@@ -2343,9 +2343,9 @@ else
           264
         </td>
         <td>
-          2639
+          2603
           -
-          2658
+          2622
         </td>
         <td>
           Apply
@@ -2364,9 +2364,9 @@ else
           285
         </td>
         <td>
-          2682
+          2646
           -
-          3009
+          2973
         </td>
         <td>
           Block
@@ -2396,9 +2396,9 @@ else
           271
         </td>
         <td>
-          2790
+          2754
           -
-          2815
+          2779
         </td>
         <td>
           Apply
@@ -2417,9 +2417,9 @@ else
           276
         </td>
         <td>
-          2776
+          2740
           -
-          2776
+          2740
         </td>
         <td>
           Block
@@ -2438,9 +2438,9 @@ else
           270
         </td>
         <td>
-          2785
+          2749
           -
-          2786
+          2750
         </td>
         <td>
           Literal
@@ -2459,9 +2459,9 @@ else
           272
         </td>
         <td>
-          2780
+          2744
           -
-          2815
+          2779
         </td>
         <td>
           Apply
@@ -2480,9 +2480,9 @@ else
           275
         </td>
         <td>
-          2776
+          2740
           -
-          2776
+          2740
         </td>
         <td>
           Literal
@@ -2501,9 +2501,9 @@ else
           274
         </td>
         <td>
-          2827
+          2791
           -
-          2846
+          2810
         </td>
         <td>
           Assign
@@ -2522,9 +2522,9 @@ else
           273
         </td>
         <td>
-          2827
+          2791
           -
-          2846
+          2810
         </td>
         <td>
           Apply
@@ -2543,9 +2543,9 @@ else
           277
         </td>
         <td>
-          2855
+          2819
           -
-          2869
+          2833
         </td>
         <td>
           Apply
@@ -2564,9 +2564,9 @@ else
           278
         </td>
         <td>
-          2878
+          2842
           -
-          2896
+          2860
         </td>
         <td>
           Apply
@@ -2585,9 +2585,9 @@ else
           280
         </td>
         <td>
-          2910
+          2874
           -
-          2937
+          2901
         </td>
         <td>
           Apply
@@ -2606,9 +2606,9 @@ else
           283
         </td>
         <td>
-          2906
+          2870
           -
-          2906
+          2870
         </td>
         <td>
           Literal
@@ -2627,9 +2627,9 @@ else
           279
         </td>
         <td>
-          2916
+          2880
           -
-          2936
+          2900
         </td>
         <td>
           Apply
@@ -2648,9 +2648,9 @@ else
           284
         </td>
         <td>
-          2906
+          2870
           -
-          2906
+          2870
         </td>
         <td>
           Block
@@ -2669,9 +2669,9 @@ else
           282
         </td>
         <td>
-          2981
+          2945
           -
-          3001
+          2965
         </td>
         <td>
           Assign
@@ -2690,9 +2690,9 @@ else
           281
         </td>
         <td>
-          2981
+          2945
           -
-          3001
+          2965
         </td>
         <td>
           Apply
@@ -2711,9 +2711,9 @@ else
           286
         </td>
         <td>
-          3016
+          2980
           -
-          3022
+          2986
         </td>
         <td>
           Apply
@@ -2732,9 +2732,9 @@ else
           292
         </td>
         <td>
-          3080
+          3044
           -
-          3125
+          3089
         </td>
         <td>
           Apply
@@ -2753,9 +2753,9 @@ else
           291
         </td>
         <td>
-          3035
+          2999
           -
-          3078
+          3042
         </td>
         <td>
           Apply
@@ -2774,9 +2774,9 @@ else
           293
         </td>
         <td>
-          3034
+          2998
           -
-          3126
+          3090
         </td>
         <td>
           Apply
