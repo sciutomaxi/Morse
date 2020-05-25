@@ -1,0 +1,1008 @@
+<scoverage 
+statement-count="297" statements-invoked="257" statement-rate="86.53" branch-rate="97.22" version="1.0" timestamp="1590377266631">
+    <packages>
+        <package name="controllers" statement-count="159" statements-invoked="123" statement-rate="77.36">
+            <classes>
+                <class 
+                name="controllers.TranslateController" filename="controllers/TranslateController.scala" statement-count="159" statements-invoked="123" statement-rate="77.36" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="controllers/TranslateController/translateSmart" statement-count="76" statements-invoked="40" statement-rate="52.63" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3256" end="3256" line="85" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3490" end="3526" line="90" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2414" end="2461" line="69" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2569" end="2635" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3657" end="3674" line="96" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2753" end="2807" line="76" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2918" end="2918" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3182" end="3220" line="84" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2493" end="2493" line="70" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2558" end="2636" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3179" end="3221" line="84" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3052" end="3064" line="82" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2200" end="2239" line="64" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3646" end="3675" line="96" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2851" end="2851" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3431" end="3432" line="89" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3456" end="3456" line="90" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3277" end="3289" line="85" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3116" end="3116" line="83" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2429" end="2460" line="69" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2952" end="2985" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2571" end="2588" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2756" end="2806" line="76" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3398" end="3432" line="89" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3446" end="3527" line="90" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3116" end="3116" line="83" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2795" end="2805" line="76" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3290" end="3323" line="85" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2921" end="2938" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2919" end="2985" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3209" end="3219" line="84" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3256" end="3256" line="85" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2589" end="2601" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2755" end="2755" line="76" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2428" end="2428" line="69" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3459" end="3476" line="90" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3605" end="3637" line="95" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2221" end="2221" line="64" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2494" end="2532" line="70" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3400" end="3417" line="89" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3181" end="3181" line="84" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2908" end="2986" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3457" end="3526" line="90" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3656" end="3656" line="96" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2568" end="2568" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2851" end="2851" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2491" end="2533" line="70" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2364" end="2376" line="68" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3477" end="3489" line="90" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3656" end="3656" line="96" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3181" end="3181" line="84" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3246" end="3324" line="85" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2918" end="2918" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2303" end="2315" line="66" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2493" end="2493" line="70" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3456" end="3456" line="90" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3259" end="3276" line="85" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2155" end="3693" line="63" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3418" end="3430" line="89" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2702" end="2714" line="75" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2837" end="2883" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3117" end="3147" line="83" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2428" end="2428" line="69" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2602" end="2635" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3385" end="3433" line="89" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3102" end="3148" line="83" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3617" end="3617" line="95" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2755" end="2755" line="76" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3257" end="3323" line="85" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2939" end="2951" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2162" end="2172" line="63" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2521" end="2531" line="70" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2568" end="2568" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="2852" end="2882" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3618" end="3636" line="95" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translateSmart" start="3397" end="3397" line="89" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="controllers/TranslateController/decodeBits2Morse" statement-count="29" statements-invoked="29" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1620" end="2130" line="46" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="2054" end="2054" line="57" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1846" end="1856" line="50" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1897" end="1930" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1806" end="1806" line="50" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="2093" end="2093" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1953" end="1975" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1942" end="1976" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1686" end="1686" line="47" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1899" end="1917" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="2083" end="2112" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1804" end="1858" line="50" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1627" end="1637" line="46" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1952" end="1952" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1918" end="1928" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1764" end="1792" line="49" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="2055" end="2073" line="57" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="2094" end="2111" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1884" end="1931" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1806" end="1806" line="50" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1807" end="1857" line="50" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="2042" end="2074" line="57" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1896" end="1896" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1804" end="1858" line="50" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1952" end="1952" line="53" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="2093" end="2093" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1665" end="1700" line="47" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1872" end="1986" line="51" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="decodeBits2Morse" start="1929" end="1930" line="52" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="controllers/TranslateController/&lt;none&gt;" statement-count="2" statements-invoked="2" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="&lt;none&gt;" start="444" end="467" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="&lt;none&gt;" start="451" end="466" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="controllers/TranslateController/translate2Human" statement-count="26" statements-invoked="26" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1565" end="1582" line="42" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1298" end="1326" line="35" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1440" end="1450" line="38" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1554" end="1583" line="42" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1340" end="1340" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1406" end="1453" line="38" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1161" end="1171" line="32" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1338" end="1380" line="36" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1474" end="1474" line="39" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1474" end="1474" line="39" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1451" end="1452" line="38" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1394" end="1508" line="37" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1199" end="1234" line="33" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1564" end="1564" line="42" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1418" end="1418" line="38" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1341" end="1379" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1338" end="1380" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1475" end="1497" line="39" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1154" end="1593" line="32" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1340" end="1340" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1464" end="1498" line="39" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1220" end="1220" line="33" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1421" end="1439" line="38" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1419" end="1452" line="38" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1564" end="1564" line="42" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="translate2Human" start="1368" end="1378" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="controllers/TranslateController/toAlfaToMorse" statement-count="26" statements-invoked="26" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="921" end="1035" line="22" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="868" end="906" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="945" end="945" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="1099" end="1099" line="28" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="865" end="907" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="1001" end="1001" line="24" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="716" end="751" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="978" end="979" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="737" end="737" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="948" end="966" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="991" end="1025" line="24" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="946" end="979" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="895" end="905" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="1099" end="1099" line="28" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="867" end="867" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="1002" end="1024" line="24" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="671" end="1128" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="1089" end="1118" line="28" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="933" end="980" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="867" end="867" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="1001" end="1001" line="24" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="678" end="688" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="865" end="907" line="21" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="967" end="977" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="1100" end="1117" line="28" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="controllers" class="TranslateController" class-type="Class" full-class-name="controllers.TranslateController" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/controllers/TranslateController.scala" method="toAlfaToMorse" start="815" end="853" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+        <package name="repositories" statement-count="15" statements-invoked="15" statement-rate="100.00">
+            <classes>
+                <class 
+                name="repositories.MorseRepository" filename="repositories/MorseRepository.scala" statement-count="15" statements-invoked="15" statement-rate="100.00" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="repositories/MorseRepository/loadData" statement-count="8" statements-invoked="8" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="loadData" start="356" end="356" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="loadData" start="388" end="449" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="loadData" start="413" end="439" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="loadData" start="481" end="481" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="loadData" start="357" end="371" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="loadData" start="345" end="372" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="loadData" start="465" end="477" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="loadData" start="454" end="492" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="repositories/MorseRepository/findAlfaCode" statement-count="1" statements-invoked="1" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="findAlfaCode" start="842" end="886" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="repositories/MorseRepository/findMorseCode" statement-count="3" statements-invoked="3" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="findMorseCode" start="640" end="696" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="findMorseCode" start="679" end="695" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="findMorseCode" start="661" end="668" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="repositories/MorseRepository/&lt;none&gt;" statement-count="3" statements-invoked="3" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="&lt;none&gt;" start="188" end="203" line="10" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="&lt;none&gt;" start="232" end="242" line="11" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="repositories" class="MorseRepository" class-type="Class" full-class-name="repositories.MorseRepository" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/repositories/MorseRepository.scala" method="&lt;none&gt;" start="181" end="204" line="10" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+        <package name="services" statement-count="123" statements-invoked="119" statement-rate="96.75">
+            <classes>
+                <class 
+                name="services.BinaryTranslateService" filename="services/BinaryTranslateService.scala" statement-count="119" statements-invoked="115" statement-rate="96.64" branch-rate="96.67">
+                    <methods>
+                        <method 
+                        name="services/BinaryTranslateService/translateBinaryToMorse" statement-count="55" statements-invoked="51" statement-rate="92.73" branch-rate="91.67">
+                            <statements>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1068" end="1110" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="446" end="446" line="22" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="757" end="799" line="31" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="918" end="951" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="453" end="475" line="22" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="671" end="672" line="27" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="544" end="544" line="25" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="348" end="365" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="553" end="554" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="477" end="1147" line="22" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="522" end="535" line="24" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="544" end="544" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="301" end="325" line="16" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="973" end="974" line="37" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1059" end="1110" line="41" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1152" end="1162" line="46" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="714" end="714" line="30" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="823" end="1128" line="33" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="865" end="866" line="35" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="856" end="856" line="35" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="399" end="400" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="548" end="583" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="718" end="743" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="457" end="475" line="22" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="757" end="799" line="31" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="941" end="950" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1100" end="1109" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="597" end="648" line="26" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="606" end="648" line="26" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="477" end="477" line="22" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="439" end="441" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="860" end="895" line="35" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1020" end="1045" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="766" end="799" line="31" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="489" end="510" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="446" end="446" line="22" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="909" end="951" line="36" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1059" end="1110" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="585" end="682" line="25" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="714" end="714" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="856" end="856" line="35" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="558" end="583" line="25" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1016" end="1016" line="40" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="378" end="379" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="723" end="743" line="30" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="833" end="847" line="34" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1016" end="1016" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="512" end="817" line="23" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="897" end="984" line="35" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="421" end="422" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="638" end="647" line="26" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1025" end="1045" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="1135" end="1141" line="44" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="789" end="798" line="31" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="translateBinaryToMorse" start="870" end="895" line="35" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="services/BinaryTranslateService/getDotOrDash" statement-count="5" statements-invoked="5" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getDotOrDash" start="1451" end="1454" line="58" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getDotOrDash" start="1470" end="1473" line="60" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getDotOrDash" start="1451" end="1454" line="58" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getDotOrDash" start="1428" end="1443" line="57" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getDotOrDash" start="1470" end="1473" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="services/BinaryTranslateService/getCharLettersOrWord" statement-count="10" statements-invoked="10" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1725" end="1727" line="72" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1808" end="1914" line="75" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1695" end="1715" line="71" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1826" end="1843" line="75" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1869" end="1872" line="76" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1869" end="1872" line="76" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1910" end="1914" line="78" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1725" end="1727" line="72" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1812" end="1844" line="75" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getCharLettersOrWord" start="1910" end="1914" line="78" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="services/BinaryTranslateService/getAnalysisValues" statement-count="49" statements-invoked="49" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2305" end="2326" line="97" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2101" end="2118" line="88" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="3016" end="3022" line="117" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2572" end="2592" line="104" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2269" end="2291" line="96" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2262" end="2262" line="96" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2790" end="2815" line="109" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2910" end="2937" line="114" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2639" end="2658" line="105" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2454" end="2455" line="101" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2906" end="2906" line="114" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="3080" end="3125" line="120" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2827" end="2846" line="110" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2152" end="2153" line="90" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2855" end="2869" line="111" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2227" end="2228" line="93" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2498" end="2518" line="102" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2562" end="2668" line="104" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2776" end="2776" line="109" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2201" end="2202" line="92" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2682" end="3009" line="107" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2449" end="2484" line="101" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2562" end="2562" line="104" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2293" end="3028" line="96" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2785" end="2786" line="109" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2916" end="2936" line="114" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2273" end="2291" line="96" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2486" end="2556" line="101" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2981" end="3001" line="115" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2338" end="2351" line="98" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2639" end="2658" line="105" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="3035" end="3078" line="120" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2131" end="2132" line="89" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2827" end="2846" line="110" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2566" end="2593" line="104" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2780" end="2815" line="109" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2981" end="3001" line="115" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2262" end="2262" line="96" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2459" end="2484" line="101" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2179" end="2180" line="91" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2776" end="2776" line="109" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2906" end="2906" line="114" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="3034" end="3126" line="120" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2562" end="2562" line="104" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2545" end="2546" line="103" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2328" end="2676" line="97" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2293" end="2293" line="96" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2255" end="2256" line="94" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="BinaryTranslateService" class-type="Class" full-class-name="services.BinaryTranslateService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/BinaryTranslateService.scala" method="getAnalysisValues" start="2878" end="2896" line="112" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="services.MorseService" filename="services/MorseService.scala" statement-count="4" statements-invoked="4" statement-rate="100.00" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="services/MorseService/&lt;none&gt;" statement-count="2" statements-invoked="2" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="services" class="MorseService" class-type="Class" full-class-name="services.MorseService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/MorseService.scala" method="&lt;none&gt;" start="197" end="220" line="9" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="services" class="MorseService" class-type="Class" full-class-name="services.MorseService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/MorseService.scala" method="&lt;none&gt;" start="204" end="219" line="9" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="services/MorseService/translateMorsetoAlfa" statement-count="1" statements-invoked="1" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="services" class="MorseService" class-type="Class" full-class-name="services.MorseService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/MorseService.scala" method="translateMorsetoAlfa" start="405" end="654" line="27" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="services/MorseService/translateAlfaToMorse" statement-count="1" statements-invoked="1" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="services" class="MorseService" class-type="Class" full-class-name="services.MorseService" source="/home/maximilianosciuto/develop/curso/examen/Morse/app/services/MorseService.scala" method="translateAlfaToMorse" start="827" end="942" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+    </packages>
+</scoverage>

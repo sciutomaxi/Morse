@@ -1,0 +1,2795 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          services/BinaryTranslateService.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier, monospace;'>1 <span style=''>package services
+</span>2 <span style=''>
+</span>3 <span style=''>import javax.inject.Inject
+</span>4 <span style=''>
+</span>5 <span style=''>import scala.util.Try
+</span>6 <span style=''>
+</span>7 <span style=''>class BinaryTranslateService @Inject()() {
+</span>8 <span style=''>
+</span>9 <span style=''>  /**
+</span>10 <span style=''>    * Traducimos de binario a codigo morse
+</span>11 <span style=''>    *
+</span>12 <span style=''>    * @param binary 010101000110000
+</span>13 <span style=''>    * @return code morse
+</span>14 <span style=''>    */
+</span>15 <span style=''>  def translateBinaryToMorse(binay: String) = {
+</span>16 <span style=''>    val values = </span><span style='background: #AEF1AE'>getAnalysisValues(binay)</span><span style=''>
+</span>17 <span style=''>    val binaryChars = </span><span style='background: #AEF1AE'>binay.toCharArray</span><span style=''>
+</span>18 <span style=''>    var i = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>19 <span style=''>    var countOne = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>20 <span style=''>    var countZero = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>21 <span style=''>    var morse = </span><span style='background: #AEF1AE'>&quot;&quot;</span><span style=''>
+</span>22 <span style=''>    while (</span><span style='background: #AEF1AE'>i &lt; binaryChars.length</span><span style=''>) </span><span style='background: #AEF1AE'>{
+</span>23 <span style=''></span><span style='background: #AEF1AE'>      if (binaryChars(i) == '1') {
+</span>24 <span style=''></span><span style='background: #AEF1AE'>        countOne += 1
+</span>25 <span style=''></span><span style='background: #AEF1AE'>        if (i != 0 &amp;&amp; binaryChars(i - 1) == '0') {
+</span>26 <span style=''></span><span style='background: #AEF1AE'>          morse += getCharLettersOrWord(countZero, values._2)
+</span>27 <span style=''></span><span style='background: #AEF1AE'>          countZero = 0
+</span>28 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>29 <span style=''></span><span style='background: #AEF1AE'>        //si es el fin
+</span>30 <span style=''></span><span style='background: #AEF1AE'>        if (i == binaryChars.size - 1) {
+</span>31 <span style=''></span><span style='background: #AEF1AE'>          </span><span style='background: #F0ADAD'>morse += getDotOrDash(countOne, values._1)</span><span style='background: #AEF1AE'>
+</span>32 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>33 <span style=''></span><span style='background: #AEF1AE'>      } else {
+</span>34 <span style=''></span><span style='background: #AEF1AE'>        countZero += 1
+</span>35 <span style=''></span><span style='background: #AEF1AE'>        if (i != 0 &amp;&amp; binaryChars(i - 1) == '1') {
+</span>36 <span style=''></span><span style='background: #AEF1AE'>          morse += getDotOrDash(countOne, values._1)
+</span>37 <span style=''></span><span style='background: #AEF1AE'>          countOne = 0
+</span>38 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>39 <span style=''></span><span style='background: #AEF1AE'>        //si es el fin
+</span>40 <span style=''></span><span style='background: #AEF1AE'>        if (i == binaryChars.size - 1) {
+</span>41 <span style=''></span><span style='background: #AEF1AE'>          morse += getCharLettersOrWord(countZero, values._2)
+</span>42 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>43 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>44 <span style=''></span><span style='background: #AEF1AE'>      i += 1
+</span>45 <span style=''></span><span style='background: #AEF1AE'>    }</span><span style=''>
+</span>46 <span style=''>    </span><span style='background: #AEF1AE'>morse.trim</span><span style=''>
+</span>47 <span style=''>  }
+</span>48 <span style=''>
+</span>49 <span style=''>  /**
+</span>50 <span style=''>    * Obtenemos un punto o guion dependiendo de la cantidad de 1s contados y el promedio
+</span>51 <span style=''>    *
+</span>52 <span style=''>    * @param countOne int
+</span>53 <span style=''>    * @param avg      int
+</span>54 <span style=''>    * @return String . or -
+</span>55 <span style=''>    */
+</span>56 <span style=''>  private def getDotOrDash(countOne: Int, avg: Int): String = {
+</span>57 <span style=''>    if (</span><span style='background: #AEF1AE'>countOne &lt;= avg</span><span style=''>)
+</span>58 <span style=''>      </span><span style='background: #AEF1AE'>&quot;.&quot;</span><span style=''>
+</span>59 <span style=''>    else
+</span>60 <span style=''>      </span><span style='background: #AEF1AE'>&quot;-&quot;</span><span style=''>
+</span>61 <span style=''>  }
+</span>62 <span style=''>
+</span>63 <span style=''>  /**
+</span>64 <span style=''>    * Verificamos si es una letra, palabra o caracter
+</span>65 <span style=''>    *
+</span>66 <span style=''>    * @param countZero
+</span>67 <span style=''>    * @param avgZero
+</span>68 <span style=''>    * @return
+</span>69 <span style=''>    */
+</span>70 <span style=''>  private def getCharLettersOrWord(countZero: Int, avgZero: Int): String = {
+</span>71 <span style=''>    if (</span><span style='background: #AEF1AE'>countZero &lt;= avgZero</span><span style=''>) {
+</span>72 <span style=''>      </span><span style='background: #AEF1AE'>&quot;&quot;</span><span style=''>
+</span>73 <span style=''>    } else {
+</span>74 <span style=''>      //debemos ver si es un espacio entre letras o palabras
+</span>75 <span style=''>      </span><span style='background: #AEF1AE'>if (countZero &lt;= ((avgZero * 2) + 1)) //es una letra
+</span>76 <span style=''></span><span style='background: #AEF1AE'>        &quot; &quot;
+</span>77 <span style=''></span><span style='background: #AEF1AE'>      else // es una palabra
+</span>78 <span style=''></span><span style='background: #AEF1AE'>        &quot;  &quot;</span><span style=''>
+</span>79 <span style=''>    }
+</span>80 <span style=''>  }
+</span>81 <span style=''>
+</span>82 <span style=''>  /**
+</span>83 <span style=''>    * Analizamos el binary resolviendo los promedios de 1s y 0s
+</span>84 <span style=''>    * @param binay
+</span>85 <span style=''>    * @return
+</span>86 <span style=''>    */
+</span>87 <span style=''>  def getAnalysisValues(binay: String) = {
+</span>88 <span style=''>    val binaryChars = </span><span style='background: #AEF1AE'>binay.toCharArray</span><span style=''>
+</span>89 <span style=''>    var i = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>90 <span style=''>    var countOne = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>91 <span style=''>    var ocurrenciasOne = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>92 <span style=''>    var countZero = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>93 <span style=''>    var countBitsZero = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>94 <span style=''>    var ocurrenciasZero = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>95 <span style=''>
+</span>96 <span style=''>    while (</span><span style='background: #AEF1AE'>i &lt; binaryChars.length</span><span style=''>) </span><span style='background: #AEF1AE'>{
+</span>97 <span style=''></span><span style='background: #AEF1AE'>      if (binaryChars(i) == '1') {
+</span>98 <span style=''></span><span style='background: #AEF1AE'>        countOne += 1
+</span>99 <span style=''></span><span style='background: #AEF1AE'>
+</span>100 <span style=''></span><span style='background: #AEF1AE'>        //si no es la primera pos y el anterior bit era un 0 contamos la ocurrencia
+</span>101 <span style=''></span><span style='background: #AEF1AE'>        if (i != 0 &amp;&amp; binaryChars(i - 1) == '0') {
+</span>102 <span style=''></span><span style='background: #AEF1AE'>          ocurrenciasZero += 1
+</span>103 <span style=''></span><span style='background: #AEF1AE'>          countBitsZero = 0
+</span>104 <span style=''></span><span style='background: #AEF1AE'>        } else if (i == (binaryChars.size - 1)) { //analizamos la ultima posicion
+</span>105 <span style=''></span><span style='background: #AEF1AE'>          ocurrenciasOne += 1
+</span>106 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>107 <span style=''></span><span style='background: #AEF1AE'>      } else {
+</span>108 <span style=''></span><span style='background: #AEF1AE'>        //si no es la primera pos y el anterior bit era un 1 contamos la ocurrencia
+</span>109 <span style=''></span><span style='background: #AEF1AE'>        if (i != 0 &amp;&amp; binaryChars(i - 1) == '1')
+</span>110 <span style=''></span><span style='background: #AEF1AE'>          ocurrenciasOne += 1
+</span>111 <span style=''></span><span style='background: #AEF1AE'>        countZero += 1
+</span>112 <span style=''></span><span style='background: #AEF1AE'>        countBitsZero += 1
+</span>113 <span style=''></span><span style='background: #AEF1AE'>
+</span>114 <span style=''></span><span style='background: #AEF1AE'>        if (i == (binaryChars.size - 1)) //analizamos la ultima posicion
+</span>115 <span style=''></span><span style='background: #AEF1AE'>          ocurrenciasZero += 1
+</span>116 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>117 <span style=''></span><span style='background: #AEF1AE'>      i += 1
+</span>118 <span style=''></span><span style='background: #AEF1AE'>    }</span><span style=''>
+</span>119 <span style=''>
+</span>120 <span style=''>    </span><span style='background: #AEF1AE'>(Try(countOne / ocurrenciasOne).getOrElse(0), Try(countZero / ocurrenciasZero).getOrElse(0))</span><span style=''>
+</span>121 <span style=''>  }
+</span>122 <span style=''>
+</span>123 <span style=''>
+</span>124 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          16
+        </td>
+        <td>
+          175
+        </td>
+        <td>
+          301
+          -
+          325
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.getAnalysisValues
+        </td>
+        <td style="background: #AEF1AE">
+          BinaryTranslateService.this.getAnalysisValues(binay)
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          176
+        </td>
+        <td>
+          348
+          -
+          365
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.toCharArray
+        </td>
+        <td style="background: #AEF1AE">
+          binay.toCharArray()
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          177
+        </td>
+        <td>
+          378
+          -
+          379
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          178
+        </td>
+        <td>
+          399
+          -
+          400
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          179
+        </td>
+        <td>
+          421
+          -
+          422
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          180
+        </td>
+        <td>
+          439
+          -
+          441
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          227
+        </td>
+        <td>
+          446
+          -
+          446
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          182
+        </td>
+        <td>
+          453
+          -
+          475
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;
+        </td>
+        <td style="background: #AEF1AE">
+          i.&lt;(binaryChars.length)
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          226
+        </td>
+        <td>
+          477
+          -
+          1147
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  {
+    if (binaryChars.apply(i).==('1'))
+      {
+        countOne = countOne.+(1);
+        if (i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('0')))
+          {
+            morse = morse.+(BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2));
+            countZero = 0
+          }
+        else
+          ();
+        if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+          morse = morse.+(BinaryTranslateService.this.getDotOrDash(countOne, values._1))
+        else
+          ()
+      }
+    else
+      {
+        countZero = countZero.+(1);
+        if (i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('1')))
+          {
+            morse = morse.+(BinaryTranslateService.this.getDotOrDash(countOne, values._1));
+            countOne = 0
+          }
+        else
+          ();
+        if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+          morse = morse.+(BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2))
+        else
+          ()
+      };
+    i = i.+(1)
+  };
+  while$1()
+}
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          181
+        </td>
+        <td>
+          457
+          -
+          475
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Array.length
+        </td>
+        <td style="background: #AEF1AE">
+          binaryChars.length
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          225
+        </td>
+        <td>
+          477
+          -
+          477
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.while$1
+        </td>
+        <td style="background: #AEF1AE">
+          while$1()
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          228
+        </td>
+        <td>
+          446
+          -
+          446
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          183
+        </td>
+        <td>
+          489
+          -
+          510
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Char.==
+        </td>
+        <td style="background: #AEF1AE">
+          binaryChars.apply(i).==('1')
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          203
+        </td>
+        <td>
+          512
+          -
+          817
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  countOne = countOne.+(1);
+  if (i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('0')))
+    {
+      morse = morse.+(BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2));
+      countZero = 0
+    }
+  else
+    ();
+  if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+    morse = morse.+(BinaryTranslateService.this.getDotOrDash(countOne, values._1))
+  else
+    ()
+}
+        </td>
+      </tr><tr>
+        <td>
+          24
+        </td>
+        <td>
+          184
+        </td>
+        <td>
+          522
+          -
+          535
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          countOne.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          194
+        </td>
+        <td>
+          544
+          -
+          544
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          185
+        </td>
+        <td>
+          553
+          -
+          554
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          193
+        </td>
+        <td>
+          544
+          -
+          544
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          187
+        </td>
+        <td>
+          548
+          -
+          583
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Boolean.&amp;&amp;
+        </td>
+        <td style="background: #AEF1AE">
+          i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('0'))
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          192
+        </td>
+        <td>
+          585
+          -
+          682
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  morse = morse.+(BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2));
+  countZero = 0
+}
+        </td>
+      </tr><tr>
+        <td>
+          25
+        </td>
+        <td>
+          186
+        </td>
+        <td>
+          558
+          -
+          583
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Char.==
+        </td>
+        <td style="background: #AEF1AE">
+          binaryChars.apply(i.-(1)).==('0')
+        </td>
+      </tr><tr>
+        <td>
+          26
+        </td>
+        <td>
+          190
+        </td>
+        <td>
+          597
+          -
+          648
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.+
+        </td>
+        <td style="background: #AEF1AE">
+          morse.+(BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2))
+        </td>
+      </tr><tr>
+        <td>
+          26
+        </td>
+        <td>
+          189
+        </td>
+        <td>
+          606
+          -
+          648
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.getCharLettersOrWord
+        </td>
+        <td style="background: #AEF1AE">
+          BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2)
+        </td>
+      </tr><tr>
+        <td>
+          26
+        </td>
+        <td>
+          188
+        </td>
+        <td>
+          638
+          -
+          647
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._2
+        </td>
+        <td style="background: #AEF1AE">
+          values._2
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          191
+        </td>
+        <td>
+          671
+          -
+          672
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          202
+        </td>
+        <td>
+          714
+          -
+          714
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          196
+        </td>
+        <td>
+          718
+          -
+          743
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.==
+        </td>
+        <td style="background: #AEF1AE">
+          i.==(scala.Predef.charArrayOps(binaryChars).size.-(1))
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          201
+        </td>
+        <td>
+          714
+          -
+          714
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          195
+        </td>
+        <td>
+          723
+          -
+          743
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.-
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.charArrayOps(binaryChars).size.-(1)
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          200
+        </td>
+        <td>
+          757
+          -
+          799
+        </td>
+        <td>
+          Assign
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          morse = morse.+(BinaryTranslateService.this.getDotOrDash(countOne, values._1))
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          199
+        </td>
+        <td>
+          757
+          -
+          799
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.+
+        </td>
+        <td style="background: #F0ADAD">
+          morse.+(BinaryTranslateService.this.getDotOrDash(countOne, values._1))
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          198
+        </td>
+        <td>
+          766
+          -
+          799
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.getDotOrDash
+        </td>
+        <td style="background: #F0ADAD">
+          BinaryTranslateService.this.getDotOrDash(countOne, values._1)
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          197
+        </td>
+        <td>
+          789
+          -
+          798
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._1
+        </td>
+        <td style="background: #F0ADAD">
+          values._1
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          223
+        </td>
+        <td>
+          823
+          -
+          1128
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  countZero = countZero.+(1);
+  if (i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('1')))
+    {
+      morse = morse.+(BinaryTranslateService.this.getDotOrDash(countOne, values._1));
+      countOne = 0
+    }
+  else
+    ();
+  if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+    morse = morse.+(BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2))
+  else
+    ()
+}
+        </td>
+      </tr><tr>
+        <td>
+          34
+        </td>
+        <td>
+          204
+        </td>
+        <td>
+          833
+          -
+          847
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          countZero.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          205
+        </td>
+        <td>
+          865
+          -
+          866
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          214
+        </td>
+        <td>
+          856
+          -
+          856
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          207
+        </td>
+        <td>
+          860
+          -
+          895
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Boolean.&amp;&amp;
+        </td>
+        <td style="background: #AEF1AE">
+          i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('1'))
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          213
+        </td>
+        <td>
+          856
+          -
+          856
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          212
+        </td>
+        <td>
+          897
+          -
+          984
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  morse = morse.+(BinaryTranslateService.this.getDotOrDash(countOne, values._1));
+  countOne = 0
+}
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          206
+        </td>
+        <td>
+          870
+          -
+          895
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Char.==
+        </td>
+        <td style="background: #AEF1AE">
+          binaryChars.apply(i.-(1)).==('1')
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          209
+        </td>
+        <td>
+          918
+          -
+          951
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.getDotOrDash
+        </td>
+        <td style="background: #AEF1AE">
+          BinaryTranslateService.this.getDotOrDash(countOne, values._1)
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          208
+        </td>
+        <td>
+          941
+          -
+          950
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._1
+        </td>
+        <td style="background: #AEF1AE">
+          values._1
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          210
+        </td>
+        <td>
+          909
+          -
+          951
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.+
+        </td>
+        <td style="background: #AEF1AE">
+          morse.+(BinaryTranslateService.this.getDotOrDash(countOne, values._1))
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          211
+        </td>
+        <td>
+          973
+          -
+          974
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          216
+        </td>
+        <td>
+          1020
+          -
+          1045
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.==
+        </td>
+        <td style="background: #AEF1AE">
+          i.==(scala.Predef.charArrayOps(binaryChars).size.-(1))
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          222
+        </td>
+        <td>
+          1016
+          -
+          1016
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          221
+        </td>
+        <td>
+          1016
+          -
+          1016
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          215
+        </td>
+        <td>
+          1025
+          -
+          1045
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.-
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.charArrayOps(binaryChars).size.-(1)
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          218
+        </td>
+        <td>
+          1068
+          -
+          1110
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.getCharLettersOrWord
+        </td>
+        <td style="background: #AEF1AE">
+          BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2)
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          220
+        </td>
+        <td>
+          1059
+          -
+          1110
+        </td>
+        <td>
+          Assign
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          morse = morse.+(BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2))
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          217
+        </td>
+        <td>
+          1100
+          -
+          1109
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._2
+        </td>
+        <td style="background: #AEF1AE">
+          values._2
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          219
+        </td>
+        <td>
+          1059
+          -
+          1110
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.+
+        </td>
+        <td style="background: #AEF1AE">
+          morse.+(BinaryTranslateService.this.getCharLettersOrWord(countZero, values._2))
+        </td>
+      </tr><tr>
+        <td>
+          44
+        </td>
+        <td>
+          224
+        </td>
+        <td>
+          1135
+          -
+          1141
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          i.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          229
+        </td>
+        <td>
+          1152
+          -
+          1162
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.trim
+        </td>
+        <td style="background: #AEF1AE">
+          morse.trim()
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          230
+        </td>
+        <td>
+          1428
+          -
+          1443
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;=
+        </td>
+        <td style="background: #AEF1AE">
+          countOne.&lt;=(avg)
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          232
+        </td>
+        <td>
+          1451
+          -
+          1454
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;.&quot;
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          231
+        </td>
+        <td>
+          1451
+          -
+          1454
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;.&quot;
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          234
+        </td>
+        <td>
+          1470
+          -
+          1473
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;-&quot;
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          233
+        </td>
+        <td>
+          1470
+          -
+          1473
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;-&quot;
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          235
+        </td>
+        <td>
+          1695
+          -
+          1715
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;=
+        </td>
+        <td style="background: #AEF1AE">
+          countZero.&lt;=(avgZero)
+        </td>
+      </tr><tr>
+        <td>
+          72
+        </td>
+        <td>
+          236
+        </td>
+        <td>
+          1725
+          -
+          1727
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          72
+        </td>
+        <td>
+          237
+        </td>
+        <td>
+          1725
+          -
+          1727
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          75
+        </td>
+        <td>
+          244
+        </td>
+        <td>
+          1808
+          -
+          1914
+        </td>
+        <td>
+          If
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          if (countZero.&lt;=(avgZero.*(2).+(1)))
+  &quot; &quot;
+else
+  &quot;  &quot;
+        </td>
+      </tr><tr>
+        <td>
+          75
+        </td>
+        <td>
+          238
+        </td>
+        <td>
+          1826
+          -
+          1843
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          avgZero.*(2).+(1)
+        </td>
+      </tr><tr>
+        <td>
+          75
+        </td>
+        <td>
+          239
+        </td>
+        <td>
+          1812
+          -
+          1844
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;=
+        </td>
+        <td style="background: #AEF1AE">
+          countZero.&lt;=(avgZero.*(2).+(1))
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          241
+        </td>
+        <td>
+          1869
+          -
+          1872
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot; &quot;
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          240
+        </td>
+        <td>
+          1869
+          -
+          1872
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot; &quot;
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          243
+        </td>
+        <td>
+          1910
+          -
+          1914
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;  &quot;
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          242
+        </td>
+        <td>
+          1910
+          -
+          1914
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;  &quot;
+        </td>
+      </tr><tr>
+        <td>
+          88
+        </td>
+        <td>
+          245
+        </td>
+        <td>
+          2101
+          -
+          2118
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.toCharArray
+        </td>
+        <td style="background: #AEF1AE">
+          binay.toCharArray()
+        </td>
+      </tr><tr>
+        <td>
+          89
+        </td>
+        <td>
+          246
+        </td>
+        <td>
+          2131
+          -
+          2132
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          247
+        </td>
+        <td>
+          2152
+          -
+          2153
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          91
+        </td>
+        <td>
+          248
+        </td>
+        <td>
+          2179
+          -
+          2180
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          92
+        </td>
+        <td>
+          249
+        </td>
+        <td>
+          2201
+          -
+          2202
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          93
+        </td>
+        <td>
+          250
+        </td>
+        <td>
+          2227
+          -
+          2228
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          94
+        </td>
+        <td>
+          251
+        </td>
+        <td>
+          2255
+          -
+          2256
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          253
+        </td>
+        <td>
+          2269
+          -
+          2291
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;
+        </td>
+        <td style="background: #AEF1AE">
+          i.&lt;(binaryChars.length)
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          289
+        </td>
+        <td>
+          2262
+          -
+          2262
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          288
+        </td>
+        <td>
+          2293
+          -
+          3028
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  {
+    if (binaryChars.apply(i).==('1'))
+      {
+        countOne = countOne.+(1);
+        if (i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('0')))
+          {
+            ocurrenciasZero = ocurrenciasZero.+(1);
+            countBitsZero = 0
+          }
+        else
+          if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+            ocurrenciasOne = ocurrenciasOne.+(1)
+          else
+            ()
+      }
+    else
+      {
+        if (i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('1')))
+          ocurrenciasOne = ocurrenciasOne.+(1)
+        else
+          ();
+        countZero = countZero.+(1);
+        countBitsZero = countBitsZero.+(1);
+        if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+          ocurrenciasZero = ocurrenciasZero.+(1)
+        else
+          ()
+      };
+    i = i.+(1)
+  };
+  while$2()
+}
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          252
+        </td>
+        <td>
+          2273
+          -
+          2291
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Array.length
+        </td>
+        <td style="background: #AEF1AE">
+          binaryChars.length
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          290
+        </td>
+        <td>
+          2262
+          -
+          2262
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          287
+        </td>
+        <td>
+          2293
+          -
+          2293
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.while$2
+        </td>
+        <td style="background: #AEF1AE">
+          while$2()
+        </td>
+      </tr><tr>
+        <td>
+          97
+        </td>
+        <td>
+          254
+        </td>
+        <td>
+          2305
+          -
+          2326
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Char.==
+        </td>
+        <td style="background: #AEF1AE">
+          binaryChars.apply(i).==('1')
+        </td>
+      </tr><tr>
+        <td>
+          97
+        </td>
+        <td>
+          269
+        </td>
+        <td>
+          2328
+          -
+          2676
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  countOne = countOne.+(1);
+  if (i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('0')))
+    {
+      ocurrenciasZero = ocurrenciasZero.+(1);
+      countBitsZero = 0
+    }
+  else
+    if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+      ocurrenciasOne = ocurrenciasOne.+(1)
+    else
+      ()
+}
+        </td>
+      </tr><tr>
+        <td>
+          98
+        </td>
+        <td>
+          255
+        </td>
+        <td>
+          2338
+          -
+          2351
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          countOne.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          101
+        </td>
+        <td>
+          256
+        </td>
+        <td>
+          2454
+          -
+          2455
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          101
+        </td>
+        <td>
+          258
+        </td>
+        <td>
+          2449
+          -
+          2484
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Boolean.&amp;&amp;
+        </td>
+        <td style="background: #AEF1AE">
+          i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('0'))
+        </td>
+      </tr><tr>
+        <td>
+          101
+        </td>
+        <td>
+          261
+        </td>
+        <td>
+          2486
+          -
+          2556
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  ocurrenciasZero = ocurrenciasZero.+(1);
+  countBitsZero = 0
+}
+        </td>
+      </tr><tr>
+        <td>
+          101
+        </td>
+        <td>
+          257
+        </td>
+        <td>
+          2459
+          -
+          2484
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Char.==
+        </td>
+        <td style="background: #AEF1AE">
+          binaryChars.apply(i.-(1)).==('0')
+        </td>
+      </tr><tr>
+        <td>
+          102
+        </td>
+        <td>
+          259
+        </td>
+        <td>
+          2498
+          -
+          2518
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          ocurrenciasZero.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          103
+        </td>
+        <td>
+          260
+        </td>
+        <td>
+          2545
+          -
+          2546
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          104
+        </td>
+        <td>
+          262
+        </td>
+        <td>
+          2572
+          -
+          2592
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.-
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.charArrayOps(binaryChars).size.-(1)
+        </td>
+      </tr><tr>
+        <td>
+          104
+        </td>
+        <td>
+          268
+        </td>
+        <td>
+          2562
+          -
+          2668
+        </td>
+        <td>
+          If
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+  ocurrenciasOne = ocurrenciasOne.+(1)
+else
+  ()
+        </td>
+      </tr><tr>
+        <td>
+          104
+        </td>
+        <td>
+          267
+        </td>
+        <td>
+          2562
+          -
+          2562
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          104
+        </td>
+        <td>
+          263
+        </td>
+        <td>
+          2566
+          -
+          2593
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.==
+        </td>
+        <td style="background: #AEF1AE">
+          i.==(scala.Predef.charArrayOps(binaryChars).size.-(1))
+        </td>
+      </tr><tr>
+        <td>
+          104
+        </td>
+        <td>
+          266
+        </td>
+        <td>
+          2562
+          -
+          2562
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          105
+        </td>
+        <td>
+          265
+        </td>
+        <td>
+          2639
+          -
+          2658
+        </td>
+        <td>
+          Assign
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ocurrenciasOne = ocurrenciasOne.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          105
+        </td>
+        <td>
+          264
+        </td>
+        <td>
+          2639
+          -
+          2658
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          ocurrenciasOne.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          107
+        </td>
+        <td>
+          285
+        </td>
+        <td>
+          2682
+          -
+          3009
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  if (i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('1')))
+    ocurrenciasOne = ocurrenciasOne.+(1)
+  else
+    ();
+  countZero = countZero.+(1);
+  countBitsZero = countBitsZero.+(1);
+  if (i.==(scala.Predef.charArrayOps(binaryChars).size.-(1)))
+    ocurrenciasZero = ocurrenciasZero.+(1)
+  else
+    ()
+}
+        </td>
+      </tr><tr>
+        <td>
+          109
+        </td>
+        <td>
+          271
+        </td>
+        <td>
+          2790
+          -
+          2815
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Char.==
+        </td>
+        <td style="background: #AEF1AE">
+          binaryChars.apply(i.-(1)).==('1')
+        </td>
+      </tr><tr>
+        <td>
+          109
+        </td>
+        <td>
+          276
+        </td>
+        <td>
+          2776
+          -
+          2776
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          109
+        </td>
+        <td>
+          270
+        </td>
+        <td>
+          2785
+          -
+          2786
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          109
+        </td>
+        <td>
+          272
+        </td>
+        <td>
+          2780
+          -
+          2815
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Boolean.&amp;&amp;
+        </td>
+        <td style="background: #AEF1AE">
+          i.!=(0).&amp;&amp;(binaryChars.apply(i.-(1)).==('1'))
+        </td>
+      </tr><tr>
+        <td>
+          109
+        </td>
+        <td>
+          275
+        </td>
+        <td>
+          2776
+          -
+          2776
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          110
+        </td>
+        <td>
+          274
+        </td>
+        <td>
+          2827
+          -
+          2846
+        </td>
+        <td>
+          Assign
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ocurrenciasOne = ocurrenciasOne.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          110
+        </td>
+        <td>
+          273
+        </td>
+        <td>
+          2827
+          -
+          2846
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          ocurrenciasOne.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          111
+        </td>
+        <td>
+          277
+        </td>
+        <td>
+          2855
+          -
+          2869
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          countZero.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          112
+        </td>
+        <td>
+          278
+        </td>
+        <td>
+          2878
+          -
+          2896
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          countBitsZero.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          114
+        </td>
+        <td>
+          280
+        </td>
+        <td>
+          2910
+          -
+          2937
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.==
+        </td>
+        <td style="background: #AEF1AE">
+          i.==(scala.Predef.charArrayOps(binaryChars).size.-(1))
+        </td>
+      </tr><tr>
+        <td>
+          114
+        </td>
+        <td>
+          283
+        </td>
+        <td>
+          2906
+          -
+          2906
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          114
+        </td>
+        <td>
+          279
+        </td>
+        <td>
+          2916
+          -
+          2936
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.-
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.charArrayOps(binaryChars).size.-(1)
+        </td>
+      </tr><tr>
+        <td>
+          114
+        </td>
+        <td>
+          284
+        </td>
+        <td>
+          2906
+          -
+          2906
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          115
+        </td>
+        <td>
+          282
+        </td>
+        <td>
+          2981
+          -
+          3001
+        </td>
+        <td>
+          Assign
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          ocurrenciasZero = ocurrenciasZero.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          115
+        </td>
+        <td>
+          281
+        </td>
+        <td>
+          2981
+          -
+          3001
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          ocurrenciasZero.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          117
+        </td>
+        <td>
+          286
+        </td>
+        <td>
+          3016
+          -
+          3022
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.+
+        </td>
+        <td style="background: #AEF1AE">
+          i.+(1)
+        </td>
+      </tr><tr>
+        <td>
+          120
+        </td>
+        <td>
+          292
+        </td>
+        <td>
+          3080
+          -
+          3125
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Try.getOrElse
+        </td>
+        <td style="background: #AEF1AE">
+          scala.util.Try.apply[Int](countZero./(ocurrenciasZero)).getOrElse[Int](0)
+        </td>
+      </tr><tr>
+        <td>
+          120
+        </td>
+        <td>
+          291
+        </td>
+        <td>
+          3035
+          -
+          3078
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Try.getOrElse
+        </td>
+        <td style="background: #AEF1AE">
+          scala.util.Try.apply[Int](countOne./(ocurrenciasOne)).getOrElse[Int](0)
+        </td>
+      </tr><tr>
+        <td>
+          120
+        </td>
+        <td>
+          293
+        </td>
+        <td>
+          3034
+          -
+          3126
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Tuple2.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Tuple2.apply[Int, Int](scala.util.Try.apply[Int](countOne./(ocurrenciasOne)).getOrElse[Int](0), scala.util.Try.apply[Int](countZero./(ocurrenciasZero)).getOrElse[Int](0))
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

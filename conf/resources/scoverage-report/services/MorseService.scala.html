@@ -1,0 +1,174 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          services/MorseService.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier, monospace;'>1 <span style=''>package services
+</span>2 <span style=''>
+</span>3 <span style=''>import javax.inject.Inject
+</span>4 <span style=''>import play.api.Logger
+</span>5 <span style=''>import repositories.MorseRepository
+</span>6 <span style=''>
+</span>7 <span style=''>class MorseService @Inject()(repository: MorseRepository) {
+</span>8 <span style=''>
+</span>9 <span style=''>  private val logger: Logger = </span><span style='background: #AEF1AE'>Logger(this.getClass())</span><span style=''>
+</span>10 <span style=''>
+</span>11 <span style=''>  /**
+</span>12 <span style=''>    * Traducimos de code morse a alfanumerico
+</span>13 <span style=''>    *
+</span>14 <span style=''>    * @param morse .... --- .-.. .-
+</span>15 <span style=''>    * @return string e.g &quot;hola&quot;
+</span>16 <span style=''>    */
+</span>17 <span style=''>  def translateMorsetoAlfa(morse: String) = {
+</span>18 <span style=''>    </span><span style='background: #AEF1AE'>morse.split(&quot; &quot;).foldLeft(&quot;&quot;) { (a, b) =&gt; {
+</span>19 <span style=''></span><span style='background: #AEF1AE'>      repository.findAlfaCode(b) match {
+</span>20 <span style=''></span><span style='background: #AEF1AE'>        case Some(caracter) =&gt; a + caracter
+</span>21 <span style=''></span><span style='background: #AEF1AE'>        case None =&gt; {
+</span>22 <span style=''></span><span style='background: #AEF1AE'>          logger.warn(s&quot;Not found $morse $b&quot;)
+</span>23 <span style=''></span><span style='background: #AEF1AE'>          a + &quot;&quot;
+</span>24 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>25 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>26 <span style=''></span><span style='background: #AEF1AE'>    }
+</span>27 <span style=''></span><span style='background: #AEF1AE'>    }.trim</span><span style=''>
+</span>28 <span style=''>  }
+</span>29 <span style=''>
+</span>30 <span style=''>  /**
+</span>31 <span style=''>    * Traducimos de alfa a code morse
+</span>32 <span style=''>    *
+</span>33 <span style=''>    * @param alfa hola
+</span>34 <span style=''>    * @return string .... --- .-.. .-
+</span>35 <span style=''>    */
+</span>36 <span style=''>  def translateAlfaToMorse(alfa: String) = {
+</span>37 <span style=''>    </span><span style='background: #AEF1AE'>alfa.foldLeft(&quot;&quot;) { (a, b) =&gt; {
+</span>38 <span style=''></span><span style='background: #AEF1AE'>      a + repository.findMorseCode(b.toString).getOrElse(&quot;&quot;) + &quot; &quot;
+</span>39 <span style=''></span><span style='background: #AEF1AE'>    }
+</span>40 <span style=''></span><span style='background: #AEF1AE'>    }.trim</span><span style=''>
+</span>41 <span style=''>  }
+</span>42 <span style=''>
+</span>43 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          9
+        </td>
+        <td>
+          295
+        </td>
+        <td>
+          197
+          -
+          220
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          play.api.Logger.apply
+        </td>
+        <td style="background: #AEF1AE">
+          play.api.Logger.apply(this.getClass())
+        </td>
+      </tr><tr>
+        <td>
+          9
+        </td>
+        <td>
+          294
+        </td>
+        <td>
+          204
+          -
+          219
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.Object.getClass
+        </td>
+        <td style="background: #AEF1AE">
+          this.getClass()
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          296
+        </td>
+        <td>
+          405
+          -
+          654
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.trim
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.refArrayOps[String](morse.split(&quot; &quot;)).foldLeft[String](&quot;&quot;)(((a: String, b: String) =&gt; MorseService.this.repository.findAlfaCode(b) match {
+  case (value: String)Some[String]((caracter @ _)) =&gt; a.+(caracter)
+  case scala.None =&gt; {
+    MorseService.this.logger.warn(scala.StringContext.apply(&quot;Not found &quot;, &quot; &quot;, &quot;&quot;).s(morse, b))(api.this.MarkerContext.NoMarker);
+    a.+(&quot;&quot;)
+  }
+})).trim()
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          297
+        </td>
+        <td>
+          827
+          -
+          942
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.trim
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.augmentString(alfa).foldLeft[String](&quot;&quot;)(((a: String, b: Char) =&gt; a.+(MorseService.this.repository.findMorseCode(b.toString()).getOrElse[String](&quot;&quot;)).+(&quot; &quot;))).trim()
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

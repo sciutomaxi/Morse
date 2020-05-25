@@ -1,0 +1,3546 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          controllers/TranslateController.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier, monospace;'>1 <span style=''>package controllers
+</span>2 <span style=''>
+</span>3 <span style=''>import javax.inject._
+</span>4 <span style=''>import models.{RequestMorse, RequestTranslate}
+</span>5 <span style=''>import play.api.Logger
+</span>6 <span style=''>import play.api.libs.json.{Format, JsError, JsSuccess, Json}
+</span>7 <span style=''>import play.api.mvc._
+</span>8 <span style=''>import services.{BinaryTranslateService, MorseService}
+</span>9 <span style=''>
+</span>10 <span style=''>@Singleton
+</span>11 <span style=''>class TranslateController @Inject()(morse: MorseService, binaryTranslate: BinaryTranslateService, cc: ControllerComponents) extends AbstractController(cc) {
+</span>12 <span style=''>
+</span>13 <span style=''>  val logger: Logger = </span><span style='background: #AEF1AE'>Logger(this.getClass())</span><span style=''>
+</span>14 <span style=''>  implicit val requestMorseFormat: Format[RequestMorse] = Json.format[RequestMorse]
+</span>15 <span style=''>  implicit val requestTranslateFormat: Format[RequestTranslate] = Json.format[RequestTranslate]
+</span>16 <span style=''>
+</span>17 <span style=''>  def toAlfaToMorse = </span><span style='background: #AEF1AE'>Action(parse.json) { implicit request =&gt;
+</span>18 <span style=''></span><span style='background: #AEF1AE'>    request.body.validate[RequestMorse] match {
+</span>19 <span style=''></span><span style='background: #AEF1AE'>      case r: JsSuccess[RequestMorse] =&gt; {
+</span>20 <span style=''></span><span style='background: #AEF1AE'>        if (r.get.text.matches(&quot;[[A-Za-z0-9 ]+]+&quot;))
+</span>21 <span style=''></span><span style='background: #AEF1AE'>          Ok(morse.translateAlfaToMorse(r.get.text))
+</span>22 <span style=''></span><span style='background: #AEF1AE'>        else {
+</span>23 <span style=''></span><span style='background: #AEF1AE'>          logger.error(s&quot;Input incorrecto ${r.get.text}&quot;)
+</span>24 <span style=''></span><span style='background: #AEF1AE'>          BadRequest(&quot;Caracteres invalidos&quot;)
+</span>25 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>26 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>27 <span style=''></span><span style='background: #AEF1AE'>      case validationErr: JsError =&gt;
+</span>28 <span style=''></span><span style='background: #AEF1AE'>        BadRequest(&quot;Json incorrecto&quot;)
+</span>29 <span style=''></span><span style='background: #AEF1AE'>    }
+</span>30 <span style=''></span><span style='background: #AEF1AE'>  }</span><span style=''>
+</span>31 <span style=''>
+</span>32 <span style=''>  def translate2Human = </span><span style='background: #AEF1AE'>Action(parse.json) { implicit request =&gt;
+</span>33 <span style=''></span><span style='background: #AEF1AE'>    request.body.validate[RequestMorse] match {
+</span>34 <span style=''></span><span style='background: #AEF1AE'>      case r: JsSuccess[RequestMorse] =&gt; {
+</span>35 <span style=''></span><span style='background: #AEF1AE'>        if (r.get.text.matches(&quot;[. -]+&quot;))
+</span>36 <span style=''></span><span style='background: #AEF1AE'>          Ok(morse.translateMorsetoAlfa(r.get.text))
+</span>37 <span style=''></span><span style='background: #AEF1AE'>        else {
+</span>38 <span style=''></span><span style='background: #AEF1AE'>          logger.error(s&quot;Input incorrecto ${r.get.text}&quot;)
+</span>39 <span style=''></span><span style='background: #AEF1AE'>          BadRequest(&quot;Caracteres invalidos&quot;)
+</span>40 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>41 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>42 <span style=''></span><span style='background: #AEF1AE'>      case validationErr: JsError =&gt; BadRequest(&quot;Json incorrecto&quot;)
+</span>43 <span style=''></span><span style='background: #AEF1AE'>    }
+</span>44 <span style=''></span><span style='background: #AEF1AE'>  }</span><span style=''>
+</span>45 <span style=''>
+</span>46 <span style=''>  def decodeBits2Morse = </span><span style='background: #AEF1AE'>Action(parse.json) { implicit request =&gt;
+</span>47 <span style=''></span><span style='background: #AEF1AE'>    request.body.validate[RequestMorse] match {
+</span>48 <span style=''></span><span style='background: #AEF1AE'>      case r: JsSuccess[RequestMorse] =&gt; {
+</span>49 <span style=''></span><span style='background: #AEF1AE'>        if (r.get.text.matches(&quot;[0-1]+&quot;))
+</span>50 <span style=''></span><span style='background: #AEF1AE'>          Ok(binaryTranslate.translateBinaryToMorse(r.get.text))
+</span>51 <span style=''></span><span style='background: #AEF1AE'>        else {
+</span>52 <span style=''></span><span style='background: #AEF1AE'>          logger.error(s&quot;Input incorrecto ${r.get.text}&quot;)
+</span>53 <span style=''></span><span style='background: #AEF1AE'>          BadRequest(&quot;Caracteres invalidos&quot;)
+</span>54 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>55 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>56 <span style=''></span><span style='background: #AEF1AE'>      case validationErr: JsError =&gt; {
+</span>57 <span style=''></span><span style='background: #AEF1AE'>        logger.error(s&quot;Json incorrecto&quot;)
+</span>58 <span style=''></span><span style='background: #AEF1AE'>        BadRequest(&quot;Json incorrecto&quot;)
+</span>59 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>60 <span style=''></span><span style='background: #AEF1AE'>    }
+</span>61 <span style=''></span><span style='background: #AEF1AE'>  }</span><span style=''>
+</span>62 <span style=''>
+</span>63 <span style=''>  def translateSmart = </span><span style='background: #AEF1AE'>Action(parse.json) { implicit request =&gt;
+</span>64 <span style=''></span><span style='background: #AEF1AE'>    request.body.validate[RequestTranslate] match {
+</span>65 <span style=''></span><span style='background: #AEF1AE'>      case r: JsSuccess[RequestTranslate] =&gt; {
+</span>66 <span style=''></span><span style='background: #AEF1AE'>        r.get.source match {
+</span>67 <span style=''></span><span style='background: #AEF1AE'>          case &quot;morse&quot; =&gt; {
+</span>68 <span style=''></span><span style='background: #AEF1AE'>            r.get.target match {
+</span>69 <span style=''></span><span style='background: #AEF1AE'>              case &quot;bits&quot; =&gt; NotImplemented(&quot;morse to bits not implemented&quot;)
+</span>70 <span style=''></span><span style='background: #AEF1AE'>              case &quot;alfa&quot; =&gt; Ok(morse.translateMorsetoAlfa(r.get.text))
+</span>71 <span style=''></span><span style='background: #AEF1AE'>              case _ =&gt; </span><span style='background: #F0ADAD'>BadRequest(s&quot;Target invalido ${r.get.target}. Only valid bits, morse or alfa&quot;)</span><span style='background: #AEF1AE'>
+</span>72 <span style=''></span><span style='background: #AEF1AE'>            }
+</span>73 <span style=''></span><span style='background: #AEF1AE'>          }
+</span>74 <span style=''></span><span style='background: #AEF1AE'>          case &quot;bits&quot; =&gt; {
+</span>75 <span style=''></span><span style='background: #AEF1AE'>            r.get.target match {
+</span>76 <span style=''></span><span style='background: #AEF1AE'>              case &quot;morse&quot; =&gt; Ok(binaryTranslate.translateBinaryToMorse(r.get.text))
+</span>77 <span style=''></span><span style='background: #AEF1AE'>              case &quot;alfa&quot; =&gt; </span><span style='background: #F0ADAD'>NotImplemented(&quot;bits to alfa not implemented&quot;)</span><span style='background: #AEF1AE'>
+</span>78 <span style=''></span><span style='background: #AEF1AE'>              case _ =&gt; </span><span style='background: #F0ADAD'>BadRequest(s&quot;Target invalido ${r.get.target}. Only valid bits, morse or alfa&quot;)</span><span style='background: #AEF1AE'>
+</span>79 <span style=''></span><span style='background: #AEF1AE'>            }
+</span>80 <span style=''></span><span style='background: #AEF1AE'>          }
+</span>81 <span style=''></span><span style='background: #AEF1AE'>          case &quot;alfa&quot; =&gt; {
+</span>82 <span style=''></span><span style='background: #AEF1AE'>            r.get.target match {
+</span>83 <span style=''></span><span style='background: #AEF1AE'>              case &quot;bits&quot; =&gt; </span><span style='background: #F0ADAD'>NotImplemented(&quot;alfa to bits not implemented&quot;)</span><span style='background: #AEF1AE'>
+</span>84 <span style=''></span><span style='background: #AEF1AE'>              case &quot;morse&quot; =&gt; Ok(morse.translateAlfaToMorse(r.get.text))
+</span>85 <span style=''></span><span style='background: #AEF1AE'>              case _ =&gt; </span><span style='background: #F0ADAD'>BadRequest(s&quot;Target invalido ${r.get.target}. Only valid bits, morse or alfa&quot;)</span><span style='background: #AEF1AE'>
+</span>86 <span style=''></span><span style='background: #AEF1AE'>            }
+</span>87 <span style=''></span><span style='background: #AEF1AE'>          }
+</span>88 <span style=''></span><span style='background: #AEF1AE'>          case _ =&gt; {
+</span>89 <span style=''></span><span style='background: #AEF1AE'>            logger.error(s&quot;Source invalido ${r.get.source}&quot;)
+</span>90 <span style=''></span><span style='background: #AEF1AE'>            BadRequest(s&quot;Source invalido ${r.get.source}. Only valid is bits, morse or alfa&quot;)
+</span>91 <span style=''></span><span style='background: #AEF1AE'>          }
+</span>92 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>93 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>94 <span style=''></span><span style='background: #AEF1AE'>      case validationErr: JsError =&gt; {
+</span>95 <span style=''></span><span style='background: #AEF1AE'>        </span><span style='background: #F0ADAD'>logger.error(s&quot;Json incorrecto&quot;)</span><span style='background: #AEF1AE'>
+</span>96 <span style=''></span><span style='background: #AEF1AE'>        </span><span style='background: #F0ADAD'>BadRequest(&quot;Json incorrecto&quot;)</span><span style='background: #AEF1AE'>
+</span>97 <span style=''></span><span style='background: #AEF1AE'>      }
+</span>98 <span style=''></span><span style='background: #AEF1AE'>    }
+</span>99 <span style=''></span><span style='background: #AEF1AE'>  }</span><span style=''>
+</span>100 <span style=''>
+</span>101 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          444
+          -
+          467
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          play.api.Logger.apply
+        </td>
+        <td style="background: #AEF1AE">
+          play.api.Logger.apply(this.getClass())
+        </td>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          451
+          -
+          466
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.Object.getClass
+        </td>
+        <td style="background: #AEF1AE">
+          this.getClass()
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          671
+          -
+          1128
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          play.api.mvc.ActionBuilder.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Action.apply[play.api.libs.json.JsValue](TranslateController.this.parse.json).apply(((implicit request: play.api.mvc.Request[play.api.libs.json.JsValue]) =&gt; request.body.validate[models.RequestMorse](TranslateController.this.requestMorseFormat) match {
+  case (r @ (_: play.api.libs.json.JsSuccess[models.RequestMorse])) =&gt; if (r.get.text.matches(&quot;[[A-Za-z0-9 ]+]+&quot;))
+    TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateAlfaToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+  else
+    {
+      TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker);
+      TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+    }
+  case (validationErr @ (_: play.api.libs.json.JsError)) =&gt; TranslateController.this.BadRequest.apply[String](&quot;Json incorrecto&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+}))
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          678
+          -
+          688
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.PlayBodyParsers.json
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.parse.json
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          5
+        </td>
+        <td>
+          716
+          -
+          751
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.libs.json.JsValue.validate
+        </td>
+        <td style="background: #AEF1AE">
+          request.body.validate[models.RequestMorse](TranslateController.this.requestMorseFormat)
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          4
+        </td>
+        <td>
+          737
+          -
+          737
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          controllers.TranslateController.requestMorseFormat
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.requestMorseFormat
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          6
+        </td>
+        <td>
+          815
+          -
+          853
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.matches
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text.matches(&quot;[[A-Za-z0-9 ]+]+&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          8
+        </td>
+        <td>
+          868
+          -
+          906
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.MorseService.translateAlfaToMorse
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.morse.translateAlfaToMorse(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          865
+          -
+          907
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateAlfaToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          7
+        </td>
+        <td>
+          895
+          -
+          905
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestMorse.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          867
+          -
+          867
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          9
+        </td>
+        <td>
+          867
+          -
+          867
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          12
+        </td>
+        <td>
+          865
+          -
+          907
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateAlfaToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          921
+          -
+          1035
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker);
+  TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+}
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          17
+        </td>
+        <td>
+          945
+          -
+          945
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.LowPriorityMarkerContextImplicits.NoMarker
+        </td>
+        <td style="background: #AEF1AE">
+          api.this.MarkerContext.NoMarker
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          14
+        </td>
+        <td>
+          978
+          -
+          979
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          13
+        </td>
+        <td>
+          948
+          -
+          966
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Input incorrecto &quot;
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          16
+        </td>
+        <td>
+          946
+          -
+          979
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          18
+        </td>
+        <td>
+          933
+          -
+          980
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.LoggerLike.error
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker)
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          15
+        </td>
+        <td>
+          967
+          -
+          977
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestMorse.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          24
+        </td>
+        <td>
+          20
+        </td>
+        <td>
+          1001
+          -
+          1001
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          24
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          991
+          -
+          1025
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          24
+        </td>
+        <td>
+          19
+        </td>
+        <td>
+          1002
+          -
+          1024
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Caracteres invalidos&quot;
+        </td>
+      </tr><tr>
+        <td>
+          24
+        </td>
+        <td>
+          21
+        </td>
+        <td>
+          1001
+          -
+          1001
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          1099
+          -
+          1099
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          1099
+          -
+          1099
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          1089
+          -
+          1118
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.BadRequest.apply[String](&quot;Json incorrecto&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          24
+        </td>
+        <td>
+          1100
+          -
+          1117
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Json incorrecto&quot;
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          29
+        </td>
+        <td>
+          1161
+          -
+          1171
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.PlayBodyParsers.json
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.parse.json
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          54
+        </td>
+        <td>
+          1154
+          -
+          1593
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          play.api.mvc.ActionBuilder.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Action.apply[play.api.libs.json.JsValue](TranslateController.this.parse.json).apply(((implicit request: play.api.mvc.Request[play.api.libs.json.JsValue]) =&gt; request.body.validate[models.RequestMorse](TranslateController.this.requestMorseFormat) match {
+  case (r @ (_: play.api.libs.json.JsSuccess[models.RequestMorse])) =&gt; if (r.get.text.matches(&quot;[. -]+&quot;))
+    TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateMorsetoAlfa(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+  else
+    {
+      TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker);
+      TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+    }
+  case (validationErr @ (_: play.api.libs.json.JsError)) =&gt; TranslateController.this.BadRequest.apply[String](&quot;Json incorrecto&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+}))
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          31
+        </td>
+        <td>
+          1199
+          -
+          1234
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.libs.json.JsValue.validate
+        </td>
+        <td style="background: #AEF1AE">
+          request.body.validate[models.RequestMorse](TranslateController.this.requestMorseFormat)
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          30
+        </td>
+        <td>
+          1220
+          -
+          1220
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          controllers.TranslateController.requestMorseFormat
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.requestMorseFormat
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          32
+        </td>
+        <td>
+          1298
+          -
+          1326
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.matches
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text.matches(&quot;[. -]+&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          1340
+          -
+          1340
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          1338
+          -
+          1380
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateMorsetoAlfa(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          34
+        </td>
+        <td>
+          1341
+          -
+          1379
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.MorseService.translateMorsetoAlfa
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.morse.translateMorsetoAlfa(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          1338
+          -
+          1380
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateMorsetoAlfa(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          1340
+          -
+          1340
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          1368
+          -
+          1378
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestMorse.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          49
+        </td>
+        <td>
+          1394
+          -
+          1508
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker);
+  TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+}
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          41
+        </td>
+        <td>
+          1440
+          -
+          1450
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestMorse.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          44
+        </td>
+        <td>
+          1406
+          -
+          1453
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.LoggerLike.error
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker)
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          1451
+          -
+          1452
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          43
+        </td>
+        <td>
+          1418
+          -
+          1418
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.LowPriorityMarkerContextImplicits.NoMarker
+        </td>
+        <td style="background: #AEF1AE">
+          api.this.MarkerContext.NoMarker
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          1421
+          -
+          1439
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Input incorrecto &quot;
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          42
+        </td>
+        <td>
+          1419
+          -
+          1452
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          39
+        </td>
+        <td>
+          47
+        </td>
+        <td>
+          1474
+          -
+          1474
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          39
+        </td>
+        <td>
+          46
+        </td>
+        <td>
+          1474
+          -
+          1474
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          39
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          1475
+          -
+          1497
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Caracteres invalidos&quot;
+        </td>
+      </tr><tr>
+        <td>
+          39
+        </td>
+        <td>
+          48
+        </td>
+        <td>
+          1464
+          -
+          1498
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          42
+        </td>
+        <td>
+          50
+        </td>
+        <td>
+          1565
+          -
+          1582
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Json incorrecto&quot;
+        </td>
+      </tr><tr>
+        <td>
+          42
+        </td>
+        <td>
+          53
+        </td>
+        <td>
+          1554
+          -
+          1583
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.BadRequest.apply[String](&quot;Json incorrecto&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          42
+        </td>
+        <td>
+          52
+        </td>
+        <td>
+          1564
+          -
+          1564
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          42
+        </td>
+        <td>
+          51
+        </td>
+        <td>
+          1564
+          -
+          1564
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          83
+        </td>
+        <td>
+          1620
+          -
+          2130
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          play.api.mvc.ActionBuilder.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Action.apply[play.api.libs.json.JsValue](TranslateController.this.parse.json).apply(((implicit request: play.api.mvc.Request[play.api.libs.json.JsValue]) =&gt; request.body.validate[models.RequestMorse](TranslateController.this.requestMorseFormat) match {
+  case (r @ (_: play.api.libs.json.JsSuccess[models.RequestMorse])) =&gt; if (r.get.text.matches(&quot;[0-1]+&quot;))
+    TranslateController.this.Ok.apply[String](TranslateController.this.binaryTranslate.translateBinaryToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+  else
+    {
+      TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker);
+      TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+    }
+  case (validationErr @ (_: play.api.libs.json.JsError)) =&gt; {
+    TranslateController.this.logger.error(scala.StringContext.apply(&quot;Json incorrecto&quot;).s())(api.this.MarkerContext.NoMarker);
+    TranslateController.this.BadRequest.apply[String](&quot;Json incorrecto&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+  }
+}))
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          55
+        </td>
+        <td>
+          1627
+          -
+          1637
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.PlayBodyParsers.json
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.parse.json
+        </td>
+      </tr><tr>
+        <td>
+          47
+        </td>
+        <td>
+          56
+        </td>
+        <td>
+          1686
+          -
+          1686
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          controllers.TranslateController.requestMorseFormat
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.requestMorseFormat
+        </td>
+      </tr><tr>
+        <td>
+          47
+        </td>
+        <td>
+          57
+        </td>
+        <td>
+          1665
+          -
+          1700
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.libs.json.JsValue.validate
+        </td>
+        <td style="background: #AEF1AE">
+          request.body.validate[models.RequestMorse](TranslateController.this.requestMorseFormat)
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          58
+        </td>
+        <td>
+          1764
+          -
+          1792
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.matches
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text.matches(&quot;[0-1]+&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          50
+        </td>
+        <td>
+          59
+        </td>
+        <td>
+          1846
+          -
+          1856
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestMorse.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          50
+        </td>
+        <td>
+          62
+        </td>
+        <td>
+          1806
+          -
+          1806
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          50
+        </td>
+        <td>
+          64
+        </td>
+        <td>
+          1804
+          -
+          1858
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.binaryTranslate.translateBinaryToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          50
+        </td>
+        <td>
+          61
+        </td>
+        <td>
+          1806
+          -
+          1806
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          50
+        </td>
+        <td>
+          60
+        </td>
+        <td>
+          1807
+          -
+          1857
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.translateBinaryToMorse
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.binaryTranslate.translateBinaryToMorse(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          50
+        </td>
+        <td>
+          63
+        </td>
+        <td>
+          1804
+          -
+          1858
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.binaryTranslate.translateBinaryToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          51
+        </td>
+        <td>
+          75
+        </td>
+        <td>
+          1872
+          -
+          1986
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          {
+  TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker);
+  TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+}
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          68
+        </td>
+        <td>
+          1897
+          -
+          1930
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          65
+        </td>
+        <td>
+          1899
+          -
+          1917
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Input incorrecto &quot;
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          67
+        </td>
+        <td>
+          1918
+          -
+          1928
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestMorse.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          70
+        </td>
+        <td>
+          1884
+          -
+          1931
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.LoggerLike.error
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.logger.error(scala.StringContext.apply(&quot;Input incorrecto &quot;, &quot;&quot;).s(r.get.text))(api.this.MarkerContext.NoMarker)
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          69
+        </td>
+        <td>
+          1896
+          -
+          1896
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.LowPriorityMarkerContextImplicits.NoMarker
+        </td>
+        <td style="background: #AEF1AE">
+          api.this.MarkerContext.NoMarker
+        </td>
+      </tr><tr>
+        <td>
+          52
+        </td>
+        <td>
+          66
+        </td>
+        <td>
+          1929
+          -
+          1930
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          71
+        </td>
+        <td>
+          1953
+          -
+          1975
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Caracteres invalidos&quot;
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          74
+        </td>
+        <td>
+          1942
+          -
+          1976
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.BadRequest.apply[String](&quot;Caracteres invalidos&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          73
+        </td>
+        <td>
+          1952
+          -
+          1952
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          53
+        </td>
+        <td>
+          72
+        </td>
+        <td>
+          1952
+          -
+          1952
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          77
+        </td>
+        <td>
+          2054
+          -
+          2054
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.LowPriorityMarkerContextImplicits.NoMarker
+        </td>
+        <td style="background: #AEF1AE">
+          api.this.MarkerContext.NoMarker
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          76
+        </td>
+        <td>
+          2055
+          -
+          2073
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;Json incorrecto&quot;).s()
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          78
+        </td>
+        <td>
+          2042
+          -
+          2074
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.LoggerLike.error
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.logger.error(scala.StringContext.apply(&quot;Json incorrecto&quot;).s())(api.this.MarkerContext.NoMarker)
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          80
+        </td>
+        <td>
+          2093
+          -
+          2093
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          82
+        </td>
+        <td>
+          2083
+          -
+          2112
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.BadRequest.apply[String](&quot;Json incorrecto&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          79
+        </td>
+        <td>
+          2094
+          -
+          2111
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Json incorrecto&quot;
+        </td>
+      </tr><tr>
+        <td>
+          58
+        </td>
+        <td>
+          81
+        </td>
+        <td>
+          2093
+          -
+          2093
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          63
+        </td>
+        <td>
+          159
+        </td>
+        <td>
+          2155
+          -
+          3693
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          play.api.mvc.ActionBuilder.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Action.apply[play.api.libs.json.JsValue](TranslateController.this.parse.json).apply(((implicit request: play.api.mvc.Request[play.api.libs.json.JsValue]) =&gt; request.body.validate[models.RequestTranslate](TranslateController.this.requestTranslateFormat) match {
+  case (r @ (_: play.api.libs.json.JsSuccess[models.RequestTranslate])) =&gt; r.get.source match {
+    case &quot;morse&quot; =&gt; r.get.target match {
+      case &quot;bits&quot; =&gt; TranslateController.this.NotImplemented.apply[String](&quot;morse to bits not implemented&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+      case &quot;alfa&quot; =&gt; TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateMorsetoAlfa(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+      case _ =&gt; TranslateController.this.BadRequest.apply[String](scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+    }
+    case &quot;bits&quot; =&gt; r.get.target match {
+      case &quot;morse&quot; =&gt; TranslateController.this.Ok.apply[String](TranslateController.this.binaryTranslate.translateBinaryToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+      case &quot;alfa&quot; =&gt; TranslateController.this.NotImplemented.apply[String](&quot;bits to alfa not implemented&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+      case _ =&gt; TranslateController.this.BadRequest.apply[String](scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+    }
+    case &quot;alfa&quot; =&gt; r.get.target match {
+      case &quot;bits&quot; =&gt; TranslateController.this.NotImplemented.apply[String](&quot;alfa to bits not implemented&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+      case &quot;morse&quot; =&gt; TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateAlfaToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+      case _ =&gt; TranslateController.this.BadRequest.apply[String](scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+    }
+    case _ =&gt; {
+      TranslateController.this.logger.error(scala.StringContext.apply(&quot;Source invalido &quot;, &quot;&quot;).s(r.get.source))(api.this.MarkerContext.NoMarker);
+      TranslateController.this.BadRequest.apply[String](scala.StringContext.apply(&quot;Source invalido &quot;, &quot;. Only valid is bits, morse or alfa&quot;).s(r.get.source))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+    }
+  }
+  case (validationErr @ (_: play.api.libs.json.JsError)) =&gt; {
+    TranslateController.this.logger.error(scala.StringContext.apply(&quot;Json incorrecto&quot;).s())(api.this.MarkerContext.NoMarker);
+    TranslateController.this.BadRequest.apply[String](&quot;Json incorrecto&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+  }
+}))
+        </td>
+      </tr><tr>
+        <td>
+          63
+        </td>
+        <td>
+          84
+        </td>
+        <td>
+          2162
+          -
+          2172
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.PlayBodyParsers.json
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.parse.json
+        </td>
+      </tr><tr>
+        <td>
+          64
+        </td>
+        <td>
+          86
+        </td>
+        <td>
+          2200
+          -
+          2239
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.libs.json.JsValue.validate
+        </td>
+        <td style="background: #AEF1AE">
+          request.body.validate[models.RequestTranslate](TranslateController.this.requestTranslateFormat)
+        </td>
+      </tr><tr>
+        <td>
+          64
+        </td>
+        <td>
+          85
+        </td>
+        <td>
+          2221
+          -
+          2221
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          controllers.TranslateController.requestTranslateFormat
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.requestTranslateFormat
+        </td>
+      </tr><tr>
+        <td>
+          66
+        </td>
+        <td>
+          87
+        </td>
+        <td>
+          2303
+          -
+          2315
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.source
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.source
+        </td>
+      </tr><tr>
+        <td>
+          68
+        </td>
+        <td>
+          88
+        </td>
+        <td>
+          2364
+          -
+          2376
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.target
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.target
+        </td>
+      </tr><tr>
+        <td>
+          69
+        </td>
+        <td>
+          92
+        </td>
+        <td>
+          2414
+          -
+          2461
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.NotImplemented.apply[String](&quot;morse to bits not implemented&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          69
+        </td>
+        <td>
+          89
+        </td>
+        <td>
+          2429
+          -
+          2460
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;morse to bits not implemented&quot;
+        </td>
+      </tr><tr>
+        <td>
+          69
+        </td>
+        <td>
+          91
+        </td>
+        <td>
+          2428
+          -
+          2428
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          69
+        </td>
+        <td>
+          90
+        </td>
+        <td>
+          2428
+          -
+          2428
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          70
+        </td>
+        <td>
+          95
+        </td>
+        <td>
+          2493
+          -
+          2493
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          70
+        </td>
+        <td>
+          94
+        </td>
+        <td>
+          2494
+          -
+          2532
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.MorseService.translateMorsetoAlfa
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.morse.translateMorsetoAlfa(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          70
+        </td>
+        <td>
+          97
+        </td>
+        <td>
+          2491
+          -
+          2533
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateMorsetoAlfa(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          70
+        </td>
+        <td>
+          96
+        </td>
+        <td>
+          2493
+          -
+          2493
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          70
+        </td>
+        <td>
+          93
+        </td>
+        <td>
+          2521
+          -
+          2531
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          101
+        </td>
+        <td>
+          2569
+          -
+          2635
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #F0ADAD">
+          scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target)
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          104
+        </td>
+        <td>
+          2558
+          -
+          2636
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #F0ADAD">
+          TranslateController.this.BadRequest.apply[String](scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          98
+        </td>
+        <td>
+          2571
+          -
+          2588
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;Target invalido &quot;
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          100
+        </td>
+        <td>
+          2589
+          -
+          2601
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.target
+        </td>
+        <td style="background: #F0ADAD">
+          r.get.target
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          103
+        </td>
+        <td>
+          2568
+          -
+          2568
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #F0ADAD">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          99
+        </td>
+        <td>
+          2602
+          -
+          2635
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;. Only valid bits, morse or alfa&quot;
+        </td>
+      </tr><tr>
+        <td>
+          71
+        </td>
+        <td>
+          102
+        </td>
+        <td>
+          2568
+          -
+          2568
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #F0ADAD">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          75
+        </td>
+        <td>
+          105
+        </td>
+        <td>
+          2702
+          -
+          2714
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.target
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.target
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          110
+        </td>
+        <td>
+          2753
+          -
+          2807
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.binaryTranslate.translateBinaryToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          107
+        </td>
+        <td>
+          2756
+          -
+          2806
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.BinaryTranslateService.translateBinaryToMorse
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.binaryTranslate.translateBinaryToMorse(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          106
+        </td>
+        <td>
+          2795
+          -
+          2805
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          109
+        </td>
+        <td>
+          2755
+          -
+          2755
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          76
+        </td>
+        <td>
+          108
+        </td>
+        <td>
+          2755
+          -
+          2755
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          77
+        </td>
+        <td>
+          113
+        </td>
+        <td>
+          2851
+          -
+          2851
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #F0ADAD">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          77
+        </td>
+        <td>
+          112
+        </td>
+        <td>
+          2851
+          -
+          2851
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #F0ADAD">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          77
+        </td>
+        <td>
+          114
+        </td>
+        <td>
+          2837
+          -
+          2883
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #F0ADAD">
+          TranslateController.this.NotImplemented.apply[String](&quot;bits to alfa not implemented&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          77
+        </td>
+        <td>
+          111
+        </td>
+        <td>
+          2852
+          -
+          2882
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;bits to alfa not implemented&quot;
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          119
+        </td>
+        <td>
+          2918
+          -
+          2918
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #F0ADAD">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          116
+        </td>
+        <td>
+          2952
+          -
+          2985
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;. Only valid bits, morse or alfa&quot;
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          115
+        </td>
+        <td>
+          2921
+          -
+          2938
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;Target invalido &quot;
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          118
+        </td>
+        <td>
+          2919
+          -
+          2985
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #F0ADAD">
+          scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target)
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          121
+        </td>
+        <td>
+          2908
+          -
+          2986
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #F0ADAD">
+          TranslateController.this.BadRequest.apply[String](scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          120
+        </td>
+        <td>
+          2918
+          -
+          2918
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #F0ADAD">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          78
+        </td>
+        <td>
+          117
+        </td>
+        <td>
+          2939
+          -
+          2951
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.target
+        </td>
+        <td style="background: #F0ADAD">
+          r.get.target
+        </td>
+      </tr><tr>
+        <td>
+          82
+        </td>
+        <td>
+          122
+        </td>
+        <td>
+          3052
+          -
+          3064
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.target
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.target
+        </td>
+      </tr><tr>
+        <td>
+          83
+        </td>
+        <td>
+          125
+        </td>
+        <td>
+          3116
+          -
+          3116
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #F0ADAD">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          83
+        </td>
+        <td>
+          124
+        </td>
+        <td>
+          3116
+          -
+          3116
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #F0ADAD">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          83
+        </td>
+        <td>
+          123
+        </td>
+        <td>
+          3117
+          -
+          3147
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;alfa to bits not implemented&quot;
+        </td>
+      </tr><tr>
+        <td>
+          83
+        </td>
+        <td>
+          126
+        </td>
+        <td>
+          3102
+          -
+          3148
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #F0ADAD">
+          TranslateController.this.NotImplemented.apply[String](&quot;alfa to bits not implemented&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          84
+        </td>
+        <td>
+          128
+        </td>
+        <td>
+          3182
+          -
+          3220
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          services.MorseService.translateAlfaToMorse
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.morse.translateAlfaToMorse(r.get.text)
+        </td>
+      </tr><tr>
+        <td>
+          84
+        </td>
+        <td>
+          131
+        </td>
+        <td>
+          3179
+          -
+          3221
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.Ok.apply[String](TranslateController.this.morse.translateAlfaToMorse(r.get.text))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          84
+        </td>
+        <td>
+          127
+        </td>
+        <td>
+          3209
+          -
+          3219
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.text
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.text
+        </td>
+      </tr><tr>
+        <td>
+          84
+        </td>
+        <td>
+          130
+        </td>
+        <td>
+          3181
+          -
+          3181
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          84
+        </td>
+        <td>
+          129
+        </td>
+        <td>
+          3181
+          -
+          3181
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          85
+        </td>
+        <td>
+          137
+        </td>
+        <td>
+          3256
+          -
+          3256
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #F0ADAD">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          85
+        </td>
+        <td>
+          134
+        </td>
+        <td>
+          3277
+          -
+          3289
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.target
+        </td>
+        <td style="background: #F0ADAD">
+          r.get.target
+        </td>
+      </tr><tr>
+        <td>
+          85
+        </td>
+        <td>
+          133
+        </td>
+        <td>
+          3290
+          -
+          3323
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;. Only valid bits, morse or alfa&quot;
+        </td>
+      </tr><tr>
+        <td>
+          85
+        </td>
+        <td>
+          136
+        </td>
+        <td>
+          3256
+          -
+          3256
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #F0ADAD">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          85
+        </td>
+        <td>
+          138
+        </td>
+        <td>
+          3246
+          -
+          3324
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #F0ADAD">
+          TranslateController.this.BadRequest.apply[String](scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          85
+        </td>
+        <td>
+          132
+        </td>
+        <td>
+          3259
+          -
+          3276
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;Target invalido &quot;
+        </td>
+      </tr><tr>
+        <td>
+          85
+        </td>
+        <td>
+          135
+        </td>
+        <td>
+          3257
+          -
+          3323
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #F0ADAD">
+          scala.StringContext.apply(&quot;Target invalido &quot;, &quot;. Only valid bits, morse or alfa&quot;).s(r.get.target)
+        </td>
+      </tr><tr>
+        <td>
+          89
+        </td>
+        <td>
+          140
+        </td>
+        <td>
+          3431
+          -
+          3432
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          89
+        </td>
+        <td>
+          142
+        </td>
+        <td>
+          3398
+          -
+          3432
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;Source invalido &quot;, &quot;&quot;).s(r.get.source)
+        </td>
+      </tr><tr>
+        <td>
+          89
+        </td>
+        <td>
+          139
+        </td>
+        <td>
+          3400
+          -
+          3417
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Source invalido &quot;
+        </td>
+      </tr><tr>
+        <td>
+          89
+        </td>
+        <td>
+          141
+        </td>
+        <td>
+          3418
+          -
+          3430
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.source
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.source
+        </td>
+      </tr><tr>
+        <td>
+          89
+        </td>
+        <td>
+          144
+        </td>
+        <td>
+          3385
+          -
+          3433
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.LoggerLike.error
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.logger.error(scala.StringContext.apply(&quot;Source invalido &quot;, &quot;&quot;).s(r.get.source))(api.this.MarkerContext.NoMarker)
+        </td>
+      </tr><tr>
+        <td>
+          89
+        </td>
+        <td>
+          143
+        </td>
+        <td>
+          3397
+          -
+          3397
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.LowPriorityMarkerContextImplicits.NoMarker
+        </td>
+        <td style="background: #AEF1AE">
+          api.this.MarkerContext.NoMarker
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          146
+        </td>
+        <td>
+          3490
+          -
+          3526
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;. Only valid is bits, morse or alfa&quot;
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          149
+        </td>
+        <td>
+          3456
+          -
+          3456
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #AEF1AE">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          151
+        </td>
+        <td>
+          3446
+          -
+          3527
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #AEF1AE">
+          TranslateController.this.BadRequest.apply[String](scala.StringContext.apply(&quot;Source invalido &quot;, &quot;. Only valid is bits, morse or alfa&quot;).s(r.get.source))(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          145
+        </td>
+        <td>
+          3459
+          -
+          3476
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Source invalido &quot;
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          148
+        </td>
+        <td>
+          3457
+          -
+          3526
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;Source invalido &quot;, &quot;. Only valid is bits, morse or alfa&quot;).s(r.get.source)
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          147
+        </td>
+        <td>
+          3477
+          -
+          3489
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.RequestTranslate.source
+        </td>
+        <td style="background: #AEF1AE">
+          r.get.source
+        </td>
+      </tr><tr>
+        <td>
+          90
+        </td>
+        <td>
+          150
+        </td>
+        <td>
+          3456
+          -
+          3456
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #AEF1AE">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          95
+        </td>
+        <td>
+          154
+        </td>
+        <td>
+          3605
+          -
+          3637
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.LoggerLike.error
+        </td>
+        <td style="background: #F0ADAD">
+          TranslateController.this.logger.error(scala.StringContext.apply(&quot;Json incorrecto&quot;).s())(api.this.MarkerContext.NoMarker)
+        </td>
+      </tr><tr>
+        <td>
+          95
+        </td>
+        <td>
+          153
+        </td>
+        <td>
+          3617
+          -
+          3617
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.LowPriorityMarkerContextImplicits.NoMarker
+        </td>
+        <td style="background: #F0ADAD">
+          api.this.MarkerContext.NoMarker
+        </td>
+      </tr><tr>
+        <td>
+          95
+        </td>
+        <td>
+          152
+        </td>
+        <td>
+          3618
+          -
+          3636
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #F0ADAD">
+          scala.StringContext.apply(&quot;Json incorrecto&quot;).s()
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          155
+        </td>
+        <td>
+          3657
+          -
+          3674
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;Json incorrecto&quot;
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          158
+        </td>
+        <td>
+          3646
+          -
+          3675
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.mvc.Results.Status.apply
+        </td>
+        <td style="background: #F0ADAD">
+          TranslateController.this.BadRequest.apply[String](&quot;Json incorrecto&quot;)(http.this.Writeable.wString(mvc.this.Codec.utf_8))
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          157
+        </td>
+        <td>
+          3656
+          -
+          3656
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.http.DefaultWriteables.wString
+        </td>
+        <td style="background: #F0ADAD">
+          http.this.Writeable.wString(mvc.this.Codec.utf_8)
+        </td>
+      </tr><tr>
+        <td>
+          96
+        </td>
+        <td>
+          156
+        </td>
+        <td>
+          3656
+          -
+          3656
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.mvc.Codec.utf_8
+        </td>
+        <td style="background: #F0ADAD">
+          mvc.this.Codec.utf_8
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

@@ -1,0 +1,399 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          repositories/MorseRepository.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier, monospace;'>1 <span style=''>package repositories
+</span>2 <span style=''>
+</span>3 <span style=''>import play.api.libs.json._
+</span>4 <span style=''>import models.Formatters._
+</span>5 <span style=''>import models.Languages
+</span>6 <span style=''>import play.api.Logger
+</span>7 <span style=''>
+</span>8 <span style=''>class MorseRepository {
+</span>9 <span style=''>
+</span>10 <span style=''>  private val logger: Logger = </span><span style='background: #AEF1AE'>Logger(this.getClass())</span><span style=''>
+</span>11 <span style=''>  private val dictionary = </span><span style='background: #AEF1AE'>loadData()</span><span style=''>
+</span>12 <span style=''>
+</span>13 <span style=''>  /**
+</span>14 <span style=''>    * Cargamos los dicionarios en un map
+</span>15 <span style=''>    * @return
+</span>16 <span style=''>    */
+</span>17 <span style=''>  private def loadData() = {
+</span>18 <span style=''>    </span><span style='background: #AEF1AE'>logger.info(&quot;Loading data&quot;)</span><span style=''>
+</span>19 <span style=''>    val data = </span><span style='background: #AEF1AE'>scala.io.Source.fromFile(&quot;conf/resources/data.json&quot;).mkString</span><span style=''>
+</span>20 <span style=''>    </span><span style='background: #AEF1AE'>Json.parse(s&quot;&quot;&quot;$data&quot;&quot;&quot;).as[Languages]</span><span style=''>
+</span>21 <span style=''>  }
+</span>22 <span style=''>
+</span>23 <span style=''>  /**
+</span>24 <span style=''>    * Find morse
+</span>25 <span style=''>    *
+</span>26 <span style=''>    * @param alfa e.g.  hola
+</span>27 <span style=''>    * @return Morse Option[String]
+</span>28 <span style=''>    */
+</span>29 <span style=''>  def findMorseCode(alfa: String) = {
+</span>30 <span style=''>    </span><span style='background: #AEF1AE'>dictionary.languages(&quot;morse&quot;).data.get(alfa.toLowerCase)</span><span style=''>
+</span>31 <span style=''>  }
+</span>32 <span style=''>
+</span>33 <span style=''>  /**
+</span>34 <span style=''>    * Find morse
+</span>35 <span style=''>    *
+</span>36 <span style=''>    * @param morse e.g. .-.
+</span>37 <span style=''>    * @return Alfa Option[String]
+</span>38 <span style=''>    */
+</span>39 <span style=''>  def findAlfaCode(morse: String) = {
+</span>40 <span style=''>    </span><span style='background: #AEF1AE'>dictionary.languages(&quot;alfa&quot;).data.get(morse)</span><span style=''>
+</span>41 <span style=''>  }
+</span>42 <span style=''>
+</span>43 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          10
+        </td>
+        <td>
+          160
+        </td>
+        <td>
+          188
+          -
+          203
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.Object.getClass
+        </td>
+        <td style="background: #AEF1AE">
+          this.getClass()
+        </td>
+      </tr><tr>
+        <td>
+          10
+        </td>
+        <td>
+          161
+        </td>
+        <td>
+          181
+          -
+          204
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          play.api.Logger.apply
+        </td>
+        <td style="background: #AEF1AE">
+          play.api.Logger.apply(this.getClass())
+        </td>
+      </tr><tr>
+        <td>
+          11
+        </td>
+        <td>
+          162
+        </td>
+        <td>
+          232
+          -
+          242
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          repositories.MorseRepository.loadData
+        </td>
+        <td style="background: #AEF1AE">
+          MorseRepository.this.loadData()
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          164
+        </td>
+        <td>
+          356
+          -
+          356
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          play.api.LowPriorityMarkerContextImplicits.NoMarker
+        </td>
+        <td style="background: #AEF1AE">
+          api.this.MarkerContext.NoMarker
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          163
+        </td>
+        <td>
+          357
+          -
+          371
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;Loading data&quot;
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          165
+        </td>
+        <td>
+          345
+          -
+          372
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.LoggerLike.info
+        </td>
+        <td style="background: #AEF1AE">
+          MorseRepository.this.logger.info(&quot;Loading data&quot;)(api.this.MarkerContext.NoMarker)
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          167
+        </td>
+        <td>
+          388
+          -
+          449
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.io.BufferedSource.mkString
+        </td>
+        <td style="background: #AEF1AE">
+          scala.io.Source.fromFile(&quot;conf/resources/data.json&quot;)(io.this.Codec.fallbackSystemCodec).mkString
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          166
+        </td>
+        <td>
+          413
+          -
+          439
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;conf/resources/data.json&quot;
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          169
+        </td>
+        <td>
+          481
+          -
+          481
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          models.Formatters.languagesFormat
+        </td>
+        <td style="background: #AEF1AE">
+          models.Formatters.languagesFormat
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          168
+        </td>
+        <td>
+          465
+          -
+          477
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;&quot;, &quot;&quot;).s(data)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          170
+        </td>
+        <td>
+          454
+          -
+          492
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          play.api.libs.json.JsReadable.as
+        </td>
+        <td style="background: #AEF1AE">
+          play.api.libs.json.Json.parse(scala.StringContext.apply(&quot;&quot;, &quot;&quot;).s(data)).as[models.Languages](models.Formatters.languagesFormat)
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          173
+        </td>
+        <td>
+          640
+          -
+          696
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.MapLike.get
+        </td>
+        <td style="background: #AEF1AE">
+          MorseRepository.this.dictionary.languages.apply(&quot;morse&quot;).data.get(alfa.toLowerCase())
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          172
+        </td>
+        <td>
+          679
+          -
+          695
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.String.toLowerCase
+        </td>
+        <td style="background: #AEF1AE">
+          alfa.toLowerCase()
+        </td>
+      </tr><tr>
+        <td>
+          30
+        </td>
+        <td>
+          171
+        </td>
+        <td>
+          661
+          -
+          668
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;morse&quot;
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          174
+        </td>
+        <td>
+          842
+          -
+          886
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.MapLike.get
+        </td>
+        <td style="background: #AEF1AE">
+          MorseRepository.this.dictionary.languages.apply(&quot;alfa&quot;).data.get(morse)
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>
