@@ -63,6 +63,9 @@ $ curl 'https://morsemeli.herokuapp.com/translate/2text' -H 'Content-Type: appli
 $ curl 'https://morsemeli.herokuapp.com/translate/2morse' -H 'Content-Type: application/json' --data-binary $'{"text": "hola"}' 
 
 $ curl 'https://morsemeli.herokuapp.com/translate/binaryToMorse' -H 'Content-Type: application/json' --data-binary $'{"text":"00000000110110110011100001111110001111110011111100000001110111111110111011100000001100011111100000000000000111111001111110000000110000110111111110111011100000011011100000000000"}'
+
+$ curl -X POST "https://morsemeli.herokuapp.com/translate/smart" -H "accept: application/json" -H "Content-Type: application/json" -d "{"text\":"hola","source":"alfa","target":"morse"}"
+
 ```  
 
 ### Localhost

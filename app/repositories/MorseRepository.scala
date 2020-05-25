@@ -11,7 +11,7 @@ class MorseRepository {
   private val dictionary = loadData()
 
   /**
-    * Cargamos los dicionarios en un map
+    * Load dictionaries on a map
     * @return
     */
   private def loadData() = {
@@ -31,7 +31,7 @@ class MorseRepository {
   }
 
   /**
-    * Find morse
+    * Find alfanumeric
     *
     * @param morse e.g. .-.
     * @return Alfa Option[String]

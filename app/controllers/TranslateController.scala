@@ -20,12 +20,12 @@ class TranslateController @Inject()(morse: MorseService, binaryTranslate: Binary
         if (r.get.text.matches("[[A-Za-z0-9 ]+]+"))
           Ok(morse.translateAlfaToMorse(r.get.text))
         else {
-          logger.error(s"Input incorrecto ${r.get.text}")
-          BadRequest("Caracteres invalidos")
+          logger.error(s"Incorrect Input  ${r.get.text}")
+          BadRequest("Invalid characters")
         }
       }
       case validationErr: JsError =>
-        BadRequest("Json incorrecto")
+        BadRequest("Incorrect Json")
     }
   }
 
@@ -35,11 +35,11 @@ class TranslateController @Inject()(morse: MorseService, binaryTranslate: Binary
         if (r.get.text.matches("[. -]+"))
           Ok(morse.translateMorsetoAlfa(r.get.text))
         else {
-          logger.error(s"Input incorrecto ${r.get.text}")
-          BadRequest("Caracteres invalidos")
+          logger.error(s"Incorrect Input ${r.get.text}")
+          BadRequest("Invalid characters")
         }
       }
-      case validationErr: JsError => BadRequest("Json incorrecto")
+      case validationErr: JsError => BadRequest("Incorrect Json")
     }
   }
 
@@ -49,13 +49,13 @@ class TranslateController @Inject()(morse: MorseService, binaryTranslate: Binary
         if (r.get.text.matches("[0-1]+"))
           Ok(binaryTranslate.translateBinaryToMorse(r.get.text))
         else {
-          logger.error(s"Input incorrecto ${r.get.text}")
-          BadRequest("Caracteres invalidos")
+          logger.error(s"Incorrect Input ${r.get.text}")
+          BadRequest("Invalid characters")
         }
       }
       case validationErr: JsError => {
-        logger.error(s"Json incorrecto")
-        BadRequest("Json incorrecto")
+        logger.error(s"Incorrect json")
+        BadRequest("Incorrect Json")
       }
     }
   }
@@ -66,34 +66,34 @@ class TranslateController @Inject()(morse: MorseService, binaryTranslate: Binary
         r.get.source match {
           case "morse" => {
             r.get.target match {
-              case "bits" => NotImplemented("morse to bits not implemented")
+              case "bits" => NotImplemented("morse to bits is not implemented")
               case "alfa" => Ok(morse.translateMorsetoAlfa(r.get.text))
-              case _ => BadRequest(s"Target invalido ${r.get.target}. Only valid bits, morse or alfa")
+              case _ => BadRequest(s"Invalid target ${r.get.target}. Only valid bits, morse or alfa")
             }
           }
           case "bits" => {
             r.get.target match {
               case "morse" => Ok(binaryTranslate.translateBinaryToMorse(r.get.text))
-              case "alfa" => NotImplemented("bits to alfa not implemented")
-              case _ => BadRequest(s"Target invalido ${r.get.target}. Only valid bits, morse or alfa")
+              case "alfa" => NotImplemented("bits to alfa is not implemented")
+              case _ => BadRequest(s"Invalid target ${r.get.target}. Only valid bits, morse or alfa")
             }
           }
           case "alfa" => {
             r.get.target match {
-              case "bits" => NotImplemented("alfa to bits not implemented")
+              case "bits" => NotImplemented("alfa to bits is not implemented")
               case "morse" => Ok(morse.translateAlfaToMorse(r.get.text))
-              case _ => BadRequest(s"Target invalido ${r.get.target}. Only valid bits, morse or alfa")
+              case _ => BadRequest(s"Invalid target ${r.get.target}. Only valid bits, morse or alfa")
             }
           }
           case _ => {
-            logger.error(s"Source invalido ${r.get.source}")
-            BadRequest(s"Source invalido ${r.get.source}. Only valid is bits, morse or alfa")
+            logger.error(s"Invalid source ${r.get.source}")
+            BadRequest(s"Invalid source ${r.get.source}. Only valid is bits, morse or alfa")
           }
         }
       }
       case validationErr: JsError => {
-        logger.error(s"Json incorrecto")
-        BadRequest("Json incorrecto")
+        logger.error(s"Incorrect Json")
+        BadRequest("Incorrect Json")
       }
     }
   }

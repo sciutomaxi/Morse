@@ -9,7 +9,7 @@ class MorseService @Inject()(repository: MorseRepository) {
   private val logger: Logger = Logger(this.getClass())
 
   /**
-    * Traducimos de code morse a alfanumerico
+    * Translate code morse into alphanumeric
     *
     * @param morse .... --- .-.. .-
     * @return string e.g "hola"
@@ -28,7 +28,7 @@ class MorseService @Inject()(repository: MorseRepository) {
   }
 
   /**
-    * Traducimos de alfa a code morse
+    * Translate alphanumeric into code morse
     *
     * @param alfa hola
     * @return string .... --- .-.. .-

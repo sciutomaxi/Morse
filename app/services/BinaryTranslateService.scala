@@ -7,13 +7,13 @@ import scala.util.Try
 class BinaryTranslateService @Inject()() {
 
   /**
-    * Traducimos de binario a codigo morse
+    * Translate from binary to morse code
     *
     * @param binary 010101000110000
     * @return code morse
     */
   def translateBinaryToMorse(binay: String) = {
-    val values = getAnalysisValues(binay)
+    val values = getAvgOnesAndZeros(binay)
     val binaryChars = binay.toCharArray
     var i = 0
     var countOne = 0
@@ -47,7 +47,7 @@ class BinaryTranslateService @Inject()() {
   }
 
   /**
-    * Obtenemos un punto o guion dependiendo de la cantidad de 1s contados y el promedio
+    * Get a dot or dash depending on the number of counted 1s and the average
     *
     * @param countOne int
     * @param avg      int
@@ -61,7 +61,7 @@ class BinaryTranslateService @Inject()() {
   }
 
   /**
-    * Verificamos si es una letra, palabra o caracter
+    * Get a letter, word or character
     *
     * @param countZero
     * @param avgZero
@@ -80,11 +80,11 @@ class BinaryTranslateService @Inject()() {
   }
 
   /**
-    * Analizamos el binary resolviendo los promedios de 1s y 0s
+    * Get averages of 1s and 0s
     * @param binay
-    * @return
+    * @return (avg ones, avg zeros)
     */
-  def getAnalysisValues(binay: String) = {
+  def getAvgOnesAndZeros(binay: String) = {
     val binaryChars = binay.toCharArray
     var i = 0
     var countOne = 0
