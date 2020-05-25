@@ -16,7 +16,7 @@ class MorseRepository {
     */
   private def loadData() = {
     logger.info("Loading data")
-    val data = scala.io.Source.fromFile("conf/data.json").mkString
+    val data = scala.io.Source.fromFile("conf/resources/data.json").mkString
     Json.parse(s"""$data""").as[Languages]
   }
 
