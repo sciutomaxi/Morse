@@ -87,7 +87,7 @@ $ curl 'http://localhost:9000/translate/binaryToMorse' -H 'Content-Type: applica
 
 ### Cobertura
 
-Para poder realizar el reporte de cobertura del código debemos habilitar coverage en el file build.sbt:
+Podemos ver el reporte de cobertura en conf/resources/scoverage-report/index.html o podemos realizar el reporte de cobertura del código debemos habilitando coverage en el file build.sbt:
 
 
 ```sh
