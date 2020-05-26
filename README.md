@@ -31,7 +31,7 @@ Asumimos que un espacio de palabras es mayor igual a uno o mas espacios de letra
 
 #### Consideraciones
 
-Una consideracion que tuve es que en el ejemplo que ponen en el examen es un conjunto de bits asi:
+En el examen nos dan como ejemplo un conjunto de bits asi:
 
 000000001101101100111000001111110001111110011111100000001110111111110111011100000001100011111100000111111001111110000000110000110111111110111011100000011011100000000000 en alfanumerico es holameli
  
@@ -105,7 +105,7 @@ Ahora tenemos el reporte de cobertura en el directorio target/scala-2.12/scovera
 
 
 
-   [sbt]: <https://www.scala-sbt.org/index.html>
+[sbt]: <https://www.scala-sbt.org/index.html>
 
 [aqui]: <https://morsemeli.herokuapp.com/>
 
